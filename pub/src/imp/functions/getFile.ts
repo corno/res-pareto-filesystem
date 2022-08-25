@@ -1,14 +1,13 @@
-import * as pt from "pareto-core-types"
 
 import * as api from "api-pareto-filesystem"
 import { joinPath } from "../internal/joinPath"
 import * as fs from "fs"
 import { createFileError } from "../internal/createReadFileError"
 
-export type StreamConsumer = {
-    onData: ($: string) => void
-    onEnd: () => void
-}
+// export type StreamConsumer = {
+//     onData: ($: string) => void
+//     onEnd: () => void
+// }
 
 export const getFile: api.GetFile = ($, $i) => {
     const joinedPath = joinPath($.path)

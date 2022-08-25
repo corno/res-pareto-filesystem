@@ -1,33 +1,8 @@
-import * as api from "api-pareto-filesystem"
 
-import { readFile } from "./functions/readFile"
-import { readDirectory } from "./functions/readDirectory"
-import { writeFile } from "./functions/writeFile"
-import { unlink } from "./functions/unlink"
-import { getFile } from "./functions/getFile"
-import { mkdir } from "./functions/mkDir"
-import { createWriteStream } from "./functions/createWriteStream"
-
-type API = {
-    readFile: api.ReadFile
-    readDirectory: api.ReadDirectory
-
-    writeFile: api.WriteFile
-    unlink: api.Unlink
-    getFile: api.GetFile
-    makeDirectory: api.Mkdir
-    createWriteStream: api.CreateWriteStream
-
-}
-
-export const $: API = {
-    readFile: readFile,
-    readDirectory: readDirectory,
-
-    writeFile: writeFile,
-    unlink: unlink,
-
-    getFile: getFile,
-    makeDirectory: mkdir,
-    createWriteStream: createWriteStream,
-}
+export { readFile } from "./functions/readFile"
+export { readDirectory } from "./functions/readDirectory"
+export { writeFile } from "./functions/writeFile"
+export { unlink } from "./functions/unlink"
+export { getFile } from "./functions/getFile"
+export { mkdir } from "./functions/mkDir"
+export { createWriteStream } from "./functions/createWriteStream"
