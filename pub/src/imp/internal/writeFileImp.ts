@@ -1,6 +1,6 @@
 import * as pl from "pareto-core-lib"
 
-import * as api from "res-pareto-filesystem"
+import * as api from "api-pareto-filesystem"
 
 import * as fs from "fs"
 import { joinPath } from "./joinPath"

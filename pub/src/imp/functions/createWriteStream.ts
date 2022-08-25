@@ -1,6 +1,6 @@
 import * as pl from "pareto-core-lib"
 
-import * as api from "res-pareto-filesystem"
+import * as api from "api-pareto-filesystem"
 import { writeFileImp } from "../internal/writeFileImp"
 
 import { createContainingDirectories } from "../internal/createContainingDirectories"

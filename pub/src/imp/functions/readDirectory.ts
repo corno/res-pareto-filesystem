@@ -1,7 +1,7 @@
 
 import * as fs from "fs"
 import * as pr from "pareto-core-raw"
-import * as api from "res-pareto-filesystem"
+import * as api from "api-pareto-filesystem"
 import { joinPath } from "../internal/joinPath"
 import { createDirNodeData } from "../internal/createDirNodeData"
 

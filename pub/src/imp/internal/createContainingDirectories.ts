@@ -1,7 +1,7 @@
 import * as pl from "pareto-core-lib"
 
 import { mkdir } from "../functions/mkDir"
-import { TWriteFileError } from "res-pareto-filesystem"
+import { TWriteFileError } from "api-pareto-filesystem"
 
 import * as pth from "path"
 

@@ -1,7 +1,7 @@
 import * as pl from "pareto-core-lib"
 import * as pt from "pareto-core-types"
 import * as fs from "fs"
-import * as api from "res-pareto-filesystem"
+import * as api from "api-pareto-filesystem"
 import { joinPath } from "../internal/joinPath"
 
 export const mkdir: api.Mkdir = ($) => {

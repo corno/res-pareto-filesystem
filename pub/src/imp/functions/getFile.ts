@@ -1,6 +1,6 @@
 import * as pt from "pareto-core-types"
 
-import * as api from "res-pareto-filesystem"
+import * as api from "api-pareto-filesystem"
 import { joinPath } from "../internal/joinPath"
 import * as fs from "fs"
 import { createFileError } from "../internal/createReadFileError"

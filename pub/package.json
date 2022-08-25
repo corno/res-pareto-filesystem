@@ -15,10 +15,10 @@
   "files": [
     "dist"
   ],
-  "version": "0.5.0",
+  "version": "0.6.0",
   "dependencies": {
-    "pareto-core-lib": "^0.3.0",
-    "res-pareto-filesystem": "^0.6.0"
+    "api-pareto-filesystem": "^0.1.0",
+    "pareto-core-lib": "^0.3.0"
   },
-  "content-fingerprint": "8d984276fb9f0a4f173b8303f4f1876b91c35259"
+  "content-fingerprint": "a0cdbd155143605b71280f0abdfb48c97e1f2e83"
 }
