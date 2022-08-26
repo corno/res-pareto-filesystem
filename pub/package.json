@@ -18,7 +18,7 @@
   "version": "0.8.0",
   "dependencies": {
     "api-pareto-filesystem": "^0.1.0",
-    "pareto-core-lib": "^0.3.0"
+    "pareto-core-lib": "^0.4.0"
   },
-  "content-fingerprint": "24bd506ddb17520333f504a21f3fbc9d484405ff"
+  "content-fingerprint": "8ceb08296065cf88db5976d9ad5596648bb487c6"
 }
