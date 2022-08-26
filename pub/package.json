@@ -9,7 +9,7 @@
   "name": "res-pareto-filesystem",
   "repository": {
     "type": "git",
-    "url": "https://github.com/corno/rsi-pareto-filesystem.git"
+    "url": "https://github.com/corno/res-pareto-filesystem.git"
   },
   "types": "dist/index.d.ts",
   "files": [
@@ -20,5 +20,5 @@
     "api-pareto-filesystem": "^0.1.0",
     "pareto-core-lib": "^0.4.0"
   },
-  "content-fingerprint": "fee552ffac60cd5d8ea30c89a0dc2be71f1e2f5f"
+  "content-fingerprint": "dd9f44e97198297bb9fbdcbe10b2602114f592b0"
 }
