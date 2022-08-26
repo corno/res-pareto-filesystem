@@ -6,7 +6,7 @@
   "description": "filesystem functions for pareto",
   "license": "ISC",
   "main": "dist/index.js",
-  "name": "rsi-pareto-filesystem",
+  "name": "res-pareto-filesystem",
   "repository": {
     "type": "git",
     "url": "https://github.com/corno/rsi-pareto-filesystem.git"
@@ -15,10 +15,10 @@
   "files": [
     "dist"
   ],
-  "version": "0.9.0",
+  "version": "0.6.0",
   "dependencies": {
     "api-pareto-filesystem": "^0.1.0",
     "pareto-core-lib": "^0.4.0"
   },
-  "content-fingerprint": "8ceb08296065cf88db5976d9ad5596648bb487c6"
+  "content-fingerprint": "fee552ffac60cd5d8ea30c89a0dc2be71f1e2f5f"
 }
