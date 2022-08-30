@@ -1,5 +1,3 @@
-import * as pl from "pareto-core-lib"
-
 import * as api from "api-pareto-filesystem"
 
 import * as fs from "fs"
@@ -33,7 +31,7 @@ export function writeFileImp(
                         case "EISDIR":
                             return ["is directory", {}]
                         default: {
-                            pl.logDebugMessage(`DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${errMessage}`)
+                            console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${errMessage}`)
                             return ["unknown", { message: errMessage }]
                         }
                     }

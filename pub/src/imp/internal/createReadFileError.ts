@@ -1,4 +1,3 @@
-import * as pl from "pareto-core-lib"
 
 import * as api from "api-pareto-filesystem"
 
@@ -16,7 +15,7 @@ export function createFileError(
         //case ENOTDIR? if containing dir does not exist    
 
         default: {
-            pl.logDebugMessage(`DEV TODO: ADD THIS OPTION TO pareto-filesystem FILE: ${err.message}`)
+            console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem FILE: ${err.message}`)
             return ["unknown", { message: err.message }]
         }
     }

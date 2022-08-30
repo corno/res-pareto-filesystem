@@ -1,5 +1,3 @@
-import * as pl from "pareto-core-lib"
-import * as pt from "pareto-core-types"
 import * as fs from "fs"
 import * as api from "api-pareto-filesystem"
 import { joinPath } from "../internal/joinPath"
@@ -25,7 +23,7 @@ export const mkdir: api.Mkdir = ($) => {
                                 case "ENOENT":
                                     return ["no entity", {}]
                                 default: {
-                                    pl.logDebugMessage(`DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
+                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
                                 }
                             }

@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from "../internal/temp_switchStatemenSupportingFunctions"
 
 import * as api from "api-pareto-filesystem"
 import { writeFileImp } from "../internal/writeFileImp"

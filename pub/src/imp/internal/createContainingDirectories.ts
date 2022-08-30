@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from "../internal/temp_switchStatemenSupportingFunctions"
 
 import { mkdir } from "../functions/mkDir"
 import { TWriteFileError } from "api-pareto-filesystem"
