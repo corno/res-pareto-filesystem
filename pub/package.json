@@ -17,8 +17,8 @@
   ],
   "version": "0.22.0",
   "dependencies": {
-    "api-pareto-filesystem": "^0.1.1",
+    "api-pareto-filesystem": "^0.1.2",
     "pareto-core-internals": "^0.2.0"
   },
-  "content-fingerprint": "aceda5ac053dc47091e9cc823d35f9d959d6cebe"
+  "content-fingerprint": "9299b5051d841adfd39386bb29c5bc8e57111e6f"
 }
