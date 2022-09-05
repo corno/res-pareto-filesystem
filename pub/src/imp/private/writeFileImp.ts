@@ -5,9 +5,9 @@ import { joinPath } from "./joinPath"
 
 
 export function writeFileImp(
-    path: api.Path,
+    path: api.TPath,
     data: string,
-    cb: (v: api.WriteFile_Result) => void
+    cb: (v: api.TWriteFile_Result) => void
 ) {
     const joinedPath = joinPath(path)
 

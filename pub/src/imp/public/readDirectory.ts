@@ -1,15 +1,17 @@
 
-import * as fs from "fs"
-import * as pr from "pareto-core-internals"
+//import * as fs from "fs"
+//import * as pr from "pareto-core-internals"
 import * as api from "api-pareto-filesystem"
-import { joinPath } from "../internal/joinPath"
-import { createDirNodeData } from "../internal/createDirNodeData"
+import { joinPath } from "../private/joinPath"
+import { createDirNodeData } from "../private/createDirNodeData"
+import { readdir } from "../private/readdir"
+import { wrapRawDictionary } from "../private/wrapRawDictionary"
 
-export const readDirectory: api.ReadDirectory = ($) => {
+export const readDirectory: api.AReadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return {
         execute: (cb) => {
-            fs.readdir(
+            readdir(
                 joinedPath,
                 {
                     withFileTypes: true,
@@ -36,12 +38,12 @@ export const readDirectory: api.ReadDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        let values: { [key: string]: api.DirNodeData } = {}
+                        let values: { [key: string]: api.TDirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)
                         })
-                        cb(["success", pr.wrapRawDictionary(values)])
+                        cb(["success", wrapRawDictionary(values)])
                     }
                 }
             )

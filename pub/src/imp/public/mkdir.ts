@@ -1,12 +1,13 @@
-import * as fs from "fs"
+//import * as fs from "fs"
 import * as api from "api-pareto-filesystem"
-import { joinPath } from "../internal/joinPath"
+import { joinPath } from "../private/joinPath"
+import { mkdirImp } from "../private/mkdirImp"
 
-export const mkdir: api.Mkdir = ($) => {
+export const mkdir: api.AMkdir = ($) => {
     const joinedPath = joinPath($.path)
     return {
         execute: (cb) => {
-            fs.mkdir(
+            mkdirImp(
                 joinedPath,
                 {
                     recursive: $.createContainingDirectories,

@@ -1,13 +1,13 @@
 
-import * as fs from "fs"
 import * as api from "api-pareto-filesystem"
-import { joinPath } from "../internal/joinPath"
+import { joinPath } from "../private/joinPath"
+import { unlinkImp } from "../private/unlinkImp"
 
-export const unlink: api.Unlink = ($) => {
+export const unlink: api.AUnlink = ($) => {
     return {
         execute: (cb) => {
             const joinedPath = joinPath($.path)
-            fs.unlink(
+            unlinkImp(
                 joinPath($.path),
                 (err) => {
                     if (err !== null) {

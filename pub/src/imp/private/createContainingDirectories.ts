@@ -1,6 +1,6 @@
-import * as pl from "../internal/temp_switchStatemenSupportingFunctions"
+import * as pl from "./temp_switchStatemenSupportingFunctions"
 
-import { mkdir } from "../functions/mkDir"
+import { mkdir } from "../public/mkdir"
 import { TWriteFileError } from "api-pareto-filesystem"
 
 import * as pth from "path"

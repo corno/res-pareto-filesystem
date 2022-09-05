@@ -1,11 +1,11 @@
 
 import * as api from "api-pareto-filesystem"
-import { createContainingDirectories } from "../internal/createContainingDirectories"
-import { joinPath } from "../internal/joinPath"
-import { writeFileImp } from "../internal/writeFileImp"
+import { createContainingDirectories } from "../private/createContainingDirectories"
+import { joinPath } from "../private/joinPath"
+import { writeFileImp } from "../private/writeFileImp"
 
 
-export const writeFile: api.WriteFile = ($) => {
+export const writeFile: api.AWriteFile = ($) => {
     const path = $.path
     const data = $.data
     const joinedPath = joinPath($.path)

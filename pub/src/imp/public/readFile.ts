@@ -1,14 +1,15 @@
 
-import * as fs from "fs"
+//import * as fs from "fs"
 import * as api from "api-pareto-filesystem"
-import { joinPath } from "../internal/joinPath"
-import { createFileError } from "../internal/createReadFileError"
+import { joinPath } from "../private/joinPath"
+import { createFileError } from "../private/createReadFileError"
+import { readFileImp } from "../private/readFileImp"
 
-export const readFile: api.ReadFile = ($) => {
+export const readFile: api.AReadFile = ($) => {
     const joinedPath = joinPath($.path)
     return {
         execute: (cb) => {
-            fs.readFile(
+            readFileImp(
                 joinedPath,
                 {
                     encoding: "utf-8",
