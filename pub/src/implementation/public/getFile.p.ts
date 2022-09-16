@@ -1,45 +1,48 @@
-
+import * as pi from "pareto-core-internals"
 import * as api from "api-pareto-filesystem"
-import { joinPath } from "../private/joinPath"
+import { joinPath } from "../private/joinPath.p"
 //import * as fs from "fs"
-import { createFileError } from "../private/createReadFileError"
-import { readFileImp } from "../private/readFileImp"
+import { createFileError } from "../private/createReadFileError.p"
+import { readFileImp } from "../private/readFileImp.p"
 
 // export type IStreamConsumer = {
 //     onData: ($: string) => void
 //     onEnd: () => void
 // }
 
-export const f_getFile: api.AGetFile = ($, $i) => {
+export const f_getFile: api.FGetFile = ($, $i) => {
     const joinedPath = joinPath($.path)
 
-    return {
-        execute: (cb) => {
-            readFileImp(
-                joinedPath,
-                {
-                    encoding: "utf-8",
-                },
-                (err, data) => {
-                    if (err === null) {
+    return pi.wrapAsyncValueImp(
+        true,
+        {
+            _execute: (cb) => {
+                readFileImp(
+                    joinedPath,
+                    {
+                        encoding: "utf-8",
+                    },
+                    (err, data) => {
+                        if (err === null) {
 
-                        const consumer = $i.init()
-                        consumer.onData(data)
-                        consumer.onEnd()
-                        cb(["success", null])
+                            $i.init(($i) => {
+                                $i(data)
+                            })
+                            cb(["success", {}])
 
-                        // ($i.callback(data, null)).execute(cb)
-                    } else {
-                        cb(["success", {
-                            error: createFileError(err),
-                            path: joinedPath
-                        }])
+                            // ($i.callback(data, null)).execute(cb)
+                        } else {
+                            cb(["success", {
+                                error: createFileError(err),
+                                path: joinedPath
+                            }])
 
+                        }
                     }
-                }
-            )
+                )
 
+            }
         }
-    }
+    )
 
 }

@@ -8,54 +8,34 @@ import { concat } from "../private/concat.p"
 
 export const f_createWriteStream: api.FCreateWriteStream = ($, $c, $i, $a) => {
 
-    return {
-        execute: (cb) => {
-            //FIX use fs.createWriteStream
-            const joinedPath = joinPath($.path)
-            let tmp = ""
-            $c({
-                onData: ($) => {
-                    tmp = concat(tmp, $)
-                },
-                onEnd: () => {
-                    if ($.createContainingDirectories) {
-                        createContainingDirectories(
-                            joinedPath,
-                            () => {
-                                writeFileImp(
-                                    $.path,
-                                    tmp,
-                                    ($) => {
-                                        switch ($[0]) {
-                                            case "error":
-                                                pl.cc($[1], ($) => {
-                                                    $i.onError($)
-                                                })
-                                                break
-                                            case "success":
-                                                pl.cc($[1], ($) => {
+    //FIX use fs.createWriteStream
+    const joinedPath = joinPath($.path)
+    let tmp = ""
+    $c(($) => {
+        tmp = concat(tmp, $)
+    })
 
-                                                })
-                                                break
-                                            default: pl.au($[0])
-                                        }
-                                        cb()
-                                    }
-                                )
-
-                            },
-                            ($) => {
-                                $i.onError({
-                                    error: $,
-                                    path: joinedPath,
-                                })
-                                cb()
-                            }
-                        )
+    if ($.createContainingDirectories) {
+        createContainingDirectories(
+            joinedPath,
+            () => {
+                writeFileImp(
+                    $.path,
+                    tmp,
+                    ($) => {
+                        if ($[0] === "error") {
+                            $i.onError($[1])
+                        }
                     }
-                }
-            })
+                )
 
-        }
+            },
+            ($) => {
+                $i.onError({
+                    error: $,
+                    path: joinedPath,
+                })
+            }
+        )
     }
 }

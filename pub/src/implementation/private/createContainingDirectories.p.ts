@@ -2,6 +2,7 @@
 import { TWriteFileError } from "api-pareto-filesystem"
 
 import * as pth from "path"
+import { mkdirImp } from "./mkdirImp.p"
 
 export function createContainingDirectories(
     path: string,
@@ -9,44 +10,32 @@ export function createContainingDirectories(
     onError: ($: TWriteFileError) => void
 ) {
 
-    fmkdir(
-        {
-            path: pth.dirname(path),
-            createContainingDirectories: true,
-        },
-    ).execute(($) => {
-        switch ($[0]) {
-            case "success":
-                pl.cc($[1], ($) => {
-                    onDone()
-                })
-                break
-            case "error":
-                pl.cc($[1], ($) => {
-                    const path = $.path
-                    switch ($.error[0]) {
-                        case "exists":
-                            pl.cc($.error[1], ($) => {
-                                //not a real error
-                                onDone()
-                            })
-                            break
-                        case "no entity":
-                            pl.cc($.error[1], ($) => {
-                                onError(["no entity", null])
-                            })
-                            break
-                        case "unknown":
-                            pl.cc($.error[1], ($) => {
-                                onError(["unknown", { message: $.message }])
-                            })
-                            break
-                        default: pl.au($.error[0])
-                    }
+    mkdirImp(
+        pth.dirname(path),
+        { recursive: true },
+        (err) => {
+            if (err === null) {
+                onDone()
 
-                })
-                break
-            default: pl.au($[0])
+            } else {
+
+                if (err !== null) {
+                    const errCode = err.code
+                    const errMessage = err.message
+                    switch (errCode) {
+                        //what is the error code for exists????
+                        // case "???":
+                        //     onDone()
+                        //     break
+                        case "ENOENT":
+                            onError(["no entity", null])
+                            break
+                        default: {
+                            onError(["unknown", { message: errMessage }])
+                        }
+                    }
+                }
+            }
         }
-    })
+    )
 }
