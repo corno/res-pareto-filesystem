@@ -8,9 +8,9 @@ export function createFileError(
 
     switch (err.code) {
         case "ENOENT":
-            return ["no entity", {}]
+            return ["no entity", null]
         case "EISDIR":
-            return ["is directory", {}]
+            return ["is directory", null]
 
         //case ENOTDIR? if containing dir does not exist    
 

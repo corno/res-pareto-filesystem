@@ -1,13 +1,12 @@
-import * as pl from "../private/temp_switchStatemenSupportingFunctions"
-
 import * as api from "api-pareto-filesystem"
-import { writeFileImp } from "../private/writeFileImp"
 
-import { createContainingDirectories } from "../private/createContainingDirectories"
-import { joinPath } from "../private/joinPath"
-import { concat } from "../private/concat"
+import { writeFileImp } from "../private/writeFileImp.p"
 
-export const f_createWriteStream: api.XCreateWriteStream = ($, $i, $c) => {
+import { createContainingDirectories } from "../private/createContainingDirectories.p"
+import { joinPath } from "../private/joinPath.p"
+import { concat } from "../private/concat.p"
+
+export const f_createWriteStream: api.FCreateWriteStream = ($, $c, $i, $a) => {
 
     return {
         execute: (cb) => {

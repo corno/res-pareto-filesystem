@@ -22,7 +22,7 @@ export const f_mkdir: api.AMkdir = ($) => {
                             switch (errCode) {
                                 //what is the error code for exists????
                                 case "ENOENT":
-                                    return ["no entity", {}]
+                                    return ["no entity", null]
                                 default: {
                                     console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
@@ -34,7 +34,7 @@ export const f_mkdir: api.AMkdir = ($) => {
                             path: joinedPath,
                         }])
                     } else {
-                        cb(["success", {}])
+                        cb(["success", null])
                     }
                 }
             )

@@ -24,9 +24,9 @@ export const f_readDirectory: api.AReadDirectory = ($) => {
 
                             switch (errCode) {
                                 case "ENOENT":
-                                    return ["no entity", {}]
+                                    return ["no entity", null]
                                 case "ENOTDIR":
-                                    return ["is not directory", {}]
+                                    return ["is not directory", null]
                                 default: {
                                     console.error(`DEV TODO: ADD THIS OPTION TO pareto-filesystem READDIR: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]

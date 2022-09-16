@@ -1,6 +1,4 @@
-import * as pl from "./temp_switchStatemenSupportingFunctions"
 
-import { fmkdir } from "../public/f_mkdir"
 import { TWriteFileError } from "api-pareto-filesystem"
 
 import * as pth from "path"
@@ -35,7 +33,7 @@ export function createContainingDirectories(
                             break
                         case "no entity":
                             pl.cc($.error[1], ($) => {
-                                onError(["no entity", {}])
+                                onError(["no entity", null])
                             })
                             break
                         case "unknown":

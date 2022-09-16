@@ -26,7 +26,7 @@ export const f_getFile: api.AGetFile = ($, $i) => {
                         const consumer = $i.init()
                         consumer.onData(data)
                         consumer.onEnd()
-                        cb(["success", {}])
+                        cb(["success", null])
 
                         // ($i.callback(data, null)).execute(cb)
                     } else {

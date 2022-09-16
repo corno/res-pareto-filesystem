@@ -18,7 +18,7 @@ export const f_unlink: api.AUnlink = ($) => {
 
                             switch (errCode) {
                                 case "ENOENT":
-                                    return ["no entity", {}]
+                                    return ["no entity", null]
                                 default: {
                                     console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem UNLINK: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
@@ -30,7 +30,7 @@ export const f_unlink: api.AUnlink = ($) => {
                             path: joinedPath,
                         }])
                     } else {
-                        cb(["success", {}])
+                        cb(["success", null])
                     }
 
                     

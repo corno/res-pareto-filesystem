@@ -1,7 +1,7 @@
 import * as api from "api-pareto-filesystem"
 
 import * as fs from "fs"
-import { joinPath } from "./joinPath"
+import { joinPath } from "./joinPath.p"
 
 
 export function writeFileImp(
@@ -27,9 +27,9 @@ export function writeFileImp(
 
                     switch (errCode) {
                         case "ENOENT":
-                            return ["no entity", {}]
+                            return ["no entity", null]
                         case "EISDIR":
-                            return ["is directory", {}]
+                            return ["is directory", null]
                         default: {
                             console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${errMessage}`)
                             return ["unknown", { message: errMessage }]

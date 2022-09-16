@@ -1,7 +1,7 @@
 {
   "author": "Corno",
   "devDependencies": {
-    "@types/node": "^18.7.15"
+    "@types/node": "^18.7.18"
   },
   "description": "filesystem functions for pareto",
   "license": "ISC",
@@ -17,8 +17,8 @@
   ],
   "version": "0.24.0",
   "dependencies": {
-    "api-pareto-filesystem": "^0.2.0",
-    "pareto-core-internals": "^0.2.0"
+    "api-pareto-filesystem": "^0.10.0",
+    "pareto-core-internals": "^0.7.0"
   },
   "content-fingerprint": "962718db85f2e3b19772a3903ae5f864f9db457e"
 }

@@ -218,7 +218,7 @@
 //     //                                                             {
 
 //     //                                                                 path: "a dir",
-//     //                                                                 idStyle: ["name only", {}],
+//     //                                                                 idStyle: ["name only", null],
 //     //                                                             },
 //     //                                                             {
 //     //                                                                 callbacks: {
@@ -236,7 +236,7 @@
 //     //                                                                     const files: string[] = []
 //     //                                                                     $i.readRecursively(
 //     //                                                                         {
-//     //                                                                             idStyle: ["relative from root", {}],
+//     //                                                                             idStyle: ["relative from root", null],
 //     //                                                                             directoriesToExclude: [
 //     //                                                                                 "excludedDir"
 //     //                                                                             ]
