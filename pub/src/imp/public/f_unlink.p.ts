@@ -1,30 +1,26 @@
-//import * as fs from "fs"
+
 import * as api from "api-pareto-filesystem"
 import { joinPath } from "../private/joinPath"
-import { mkdirImp } from "../private/mkdirImp"
+import { unlinkImp } from "../private/unlinkImp"
 
-export const mkdir: api.AMkdir = ($) => {
-    const joinedPath = joinPath($.path)
+export const f_unlink: api.AUnlink = ($) => {
     return {
         execute: (cb) => {
-            mkdirImp(
-                joinedPath,
-                {
-                    recursive: $.createContainingDirectories,
-                },
+            const joinedPath = joinPath($.path)
+            unlinkImp(
+                joinPath($.path),
                 (err) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.TMkdirError {
+                        function createError(): api.TUnlinkError {
 
                             switch (errCode) {
-                                //what is the error code for exists????
                                 case "ENOENT":
                                     return ["no entity", {}]
                                 default: {
-                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
+                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem UNLINK: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
                                 }
                             }
@@ -36,8 +32,11 @@ export const mkdir: api.AMkdir = ($) => {
                     } else {
                         cb(["success", {}])
                     }
+
+                    
                 }
             )
         }
     }
+
 }

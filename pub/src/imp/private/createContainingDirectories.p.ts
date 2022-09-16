@@ -1,6 +1,6 @@
 import * as pl from "./temp_switchStatemenSupportingFunctions"
 
-import { mkdir } from "../public/mkdir"
+import { fmkdir } from "../public/f_mkdir"
 import { TWriteFileError } from "api-pareto-filesystem"
 
 import * as pth from "path"
@@ -11,7 +11,7 @@ export function createContainingDirectories(
     onError: ($: TWriteFileError) => void
 ) {
 
-    mkdir(
+    fmkdir(
         {
             path: pth.dirname(path),
             createContainingDirectories: true,

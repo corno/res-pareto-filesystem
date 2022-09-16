@@ -7,7 +7,7 @@ import { createDirNodeData } from "../private/createDirNodeData"
 import { readdir } from "../private/readdir"
 import { wrapRawDictionary } from "../private/wrapRawDictionary"
 
-export const readDirectory: api.AReadDirectory = ($) => {
+export const f_readDirectory: api.AReadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return {
         execute: (cb) => {
@@ -38,7 +38,7 @@ export const readDirectory: api.AReadDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        let values: { [key: string]: api.TDirNodeData } = {}
+                        const values: { [key: string]: api.TDirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)

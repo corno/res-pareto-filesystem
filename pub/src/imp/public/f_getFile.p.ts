@@ -1,12 +1,18 @@
 
-//import * as fs from "fs"
 import * as api from "api-pareto-filesystem"
 import { joinPath } from "../private/joinPath"
+//import * as fs from "fs"
 import { createFileError } from "../private/createReadFileError"
 import { readFileImp } from "../private/readFileImp"
 
-export const readFile: api.AReadFile = ($) => {
+// export type IStreamConsumer = {
+//     onData: ($: string) => void
+//     onEnd: () => void
+// }
+
+export const f_getFile: api.AGetFile = ($, $i) => {
     const joinedPath = joinPath($.path)
+
     return {
         execute: (cb) => {
             readFileImp(
@@ -16,15 +22,24 @@ export const readFile: api.AReadFile = ($) => {
                 },
                 (err, data) => {
                     if (err === null) {
-                        cb(["success", data])
+
+                        const consumer = $i.init()
+                        consumer.onData(data)
+                        consumer.onEnd()
+                        cb(["success", {}])
+
+                        // ($i.callback(data, null)).execute(cb)
                     } else {
-                        cb(["error", {
+                        cb(["success", {
                             error: createFileError(err),
                             path: joinedPath
                         }])
+
                     }
                 }
             )
-        },
+
+        }
     }
+
 }

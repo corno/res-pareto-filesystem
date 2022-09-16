@@ -7,7 +7,7 @@ import { createContainingDirectories } from "../private/createContainingDirector
 import { joinPath } from "../private/joinPath"
 import { concat } from "../private/concat"
 
-export const createWriteStream: api.XCreateWriteStream = ($, $i, $c) => {
+export const f_createWriteStream: api.XCreateWriteStream = ($, $i, $c) => {
 
     return {
         execute: (cb) => {

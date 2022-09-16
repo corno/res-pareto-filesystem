@@ -5,7 +5,7 @@ import { joinPath } from "../private/joinPath"
 import { writeFileImp } from "../private/writeFileImp"
 
 
-export const writeFile: api.AWriteFile = ($) => {
+export const f_writeFile: api.AWriteFile = ($) => {
     const path = $.path
     const data = $.data
     const joinedPath = joinPath($.path)
