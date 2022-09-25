@@ -12,32 +12,30 @@ export const f_writeFile: api.FWriteFile = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,
-        {
-            _execute: (cb) => {
-                if ($.createContainingDirectories) {
-                    createContainingDirectories(
-                        joinedPath,
-                        () => {
-                            writeFileImp(
-                                path,
-                                data,
-                                cb,
-                            )
-                        },
-                        ($) => {
-                            cb(["error", {
-                                error: $,
-                                path: joinedPath,
-                            }])
-                        }
-                    )
-                } else {
-                    writeFileImp(
-                        path,
-                        data,
-                        cb,
-                    )
-                }
+        (cb) => {
+            if ($.createContainingDirectories) {
+                createContainingDirectories(
+                    joinedPath,
+                    () => {
+                        writeFileImp(
+                            path,
+                            data,
+                            cb,
+                        )
+                    },
+                    ($) => {
+                        cb(["error", {
+                            error: $,
+                            path: joinedPath,
+                        }])
+                    }
+                )
+            } else {
+                writeFileImp(
+                    path,
+                    data,
+                    cb,
+                )
             }
         }
     )

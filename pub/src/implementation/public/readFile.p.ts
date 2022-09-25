@@ -10,25 +10,23 @@ export const f_readFile: api.FReadFile = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,
-        {
-            _execute: (cb) => {
-                readFileImp(
-                    joinedPath,
-                    {
-                        encoding: "utf-8",
-                    },
-                    (err, data) => {
-                        if (err === null) {
-                            cb(["success", data])
-                        } else {
-                            cb(["error", {
-                                error: createFileError(err),
-                                path: joinedPath
-                            }])
-                        }
+        (cb) => {
+            readFileImp(
+                joinedPath,
+                {
+                    encoding: "utf-8",
+                },
+                (err, data) => {
+                    if (err === null) {
+                        cb(["success", data])
+                    } else {
+                        cb(["error", {
+                            error: createFileError(err),
+                            path: joinedPath
+                        }])
                     }
-                )
-            },
-        }
+                }
+            )
+        },
     )
 }

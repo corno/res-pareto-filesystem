@@ -15,33 +15,29 @@ export const f_getFile: api.FGetFile = ($, $i) => {
 
     return pi.wrapAsyncValueImp(
         true,
-        {
-            _execute: (cb) => {
-                readFileImp(
-                    joinedPath,
-                    {
-                        encoding: "utf-8",
-                    },
-                    (err, data) => {
-                        if (err === null) {
+        (cb) => {
+            readFileImp(
+                joinedPath,
+                {
+                    encoding: "utf-8",
+                },
+                (err, data) => {
+                    if (err === null) {
 
-                            $i.init(($i) => {
-                                $i(data)
-                            })
-                            cb(["success", {}])
+                        $i.init(($i) => {
+                            $i(data)
+                        })
+                        cb(["success", {}])
+                    } else {
+                        cb(["error", {
+                            error: createFileError(err),
+                            path: joinedPath
+                        }])
 
-                            // ($i.callback(data, null)).execute(cb)
-                        } else {
-                            cb(["success", {
-                                error: createFileError(err),
-                                path: joinedPath
-                            }])
-
-                        }
                     }
-                )
+                }
+            )
 
-            }
         }
     )
 
