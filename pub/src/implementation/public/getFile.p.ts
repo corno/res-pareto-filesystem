@@ -11,34 +11,26 @@ import { readFileImp } from "../private/readFileImp.p"
 // }
 
 export const f_getFile: api.FGetFile = ($, $i) => {
-    const joinedPath = joinPath($.path)
+    const joinedPath = joinPath($)
 
-    return pi.wrapAsyncValueImp(
-        true,
-        (cb) => {
-            readFileImp(
-                joinedPath,
-                {
-                    encoding: "utf-8",
-                },
-                (err, data) => {
-                    if (err === null) {
+    readFileImp(
+        joinedPath,
+        {
+            encoding: "utf-8",
+        },
+        (err, data) => {
+            if (err === null) {
 
-                        $i.init(($i) => {
-                            $i(data)
-                        })
-                        cb(["success", {}])
-                    } else {
-                        cb(["error", {
-                            error: createFileError(err),
-                            path: joinedPath
-                        }])
-
-                    }
-                }
-            )
-
+                $i.init(($i) => {
+                    $i.onData(data)
+                    $i.onEnd()
+                })
+            } else {
+                $i.onError({
+                    error: createFileError(err),
+                    path: joinedPath
+                })
+            }
         }
     )
-
 }
