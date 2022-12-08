@@ -1,4 +1,4 @@
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 
 import * as fs from "fs"
 import { joinPath } from "./joinPath.p"

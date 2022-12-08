@@ -1,5 +1,5 @@
 import * as pth from "path"
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 import * as pl from "pareto-core-internals"
 
 export function joinPath(

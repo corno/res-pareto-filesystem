@@ -1,5 +1,5 @@
 
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 
 
 export function createFileError(

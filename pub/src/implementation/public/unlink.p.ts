@@ -1,6 +1,6 @@
 import * as pi from "pareto-core-internals"
 
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 import { joinPath } from "../private/joinPath.p"
 import { unlinkImp } from "../private/unlinkImp.p"
 

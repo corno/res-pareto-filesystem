@@ -1,5 +1,5 @@
 
-import { TWriteFileError } from "api-pareto-filesystem"
+import * as api from "../../interface"
 
 import * as pth from "path"
 import { mkdirImp } from "./mkdirImp.p"
@@ -7,7 +7,7 @@ import { mkdirImp } from "./mkdirImp.p"
 export function createContainingDirectories(
     path: string,
     onDone: () => void,
-    onError: ($: TWriteFileError) => void
+    onError: ($: api.TWriteFileError) => void
 ) {
 
     mkdirImp(

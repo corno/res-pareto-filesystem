@@ -1,6 +1,6 @@
 import * as pi from "pareto-core-internals"
 
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 import { createContainingDirectories } from "../private/createContainingDirectories.p"
 import { joinPath } from "../private/joinPath.p"
 import { writeFileImp } from "../private/writeFileImp.p"

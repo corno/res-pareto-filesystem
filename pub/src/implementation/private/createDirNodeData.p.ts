@@ -1,6 +1,6 @@
 import * as fs from "fs"
 
-import * as api from "api-pareto-filesystem"
+import * as api from "../../interface"
 
 export function createDirNodeData(path: string, dirent: fs.Dirent): api.TDirNodeData {
     return {
