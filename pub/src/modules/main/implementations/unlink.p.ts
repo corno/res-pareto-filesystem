@@ -1,32 +1,29 @@
 import * as pi from "pareto-core-internals"
 
-import * as api from "../../interface"
-import { joinPath } from "../private/joinPath.p"
-import { mkdirImp } from "../private/mkdirImp.p"
+import * as api from "../api"
 
-export const f_mkdir: api.FMkdir = ($) => {
-    const joinedPath = joinPath($.path)
+import { joinPath } from "../../private/implementations/joinPath.p"
+import { unlinkImp } from "../../private/implementations/unlinkImp.p"
+
+export const iunlink: api.Cunlink = ($) => {
     return pi.wrapAsyncValueImp(
         true,
         (cb) => {
-            mkdirImp(
-                joinedPath,
-                {
-                    recursive: $.createContainingDirectories,
-                },
+            const joinedPath = joinPath($.path)
+            unlinkImp(
+                joinPath($.path),
                 (err) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.TMkdirError {
+                        function createError(): api.TUnlinkError {
 
                             switch (errCode) {
-                                //what is the error code for exists????
                                 case "ENOENT":
                                     return ["no entity", null]
                                 default: {
-                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
+                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem UNLINK: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
                                 }
                             }
@@ -38,8 +35,11 @@ export const f_mkdir: api.FMkdir = ($) => {
                     } else {
                         cb(["success", {}])
                     }
+
+
                 }
             )
         }
     )
+
 }

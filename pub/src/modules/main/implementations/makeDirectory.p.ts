@@ -1,28 +1,33 @@
 import * as pi from "pareto-core-internals"
 
-import * as api from "../../interface"
-import { joinPath } from "../private/joinPath.p"
-import { unlinkImp } from "../private/unlinkImp.p"
+import * as api from "../api"
 
-export const f_unlink: api.FUnlink = ($) => {
+import { joinPath } from "../../private/implementations/joinPath.p"
+import { mkdirImp } from "../../private/implementations/mkdirImp.p"
+
+export const imakeDirectory: api.CmakeDirectory = ($) => {
+    const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,
         (cb) => {
-            const joinedPath = joinPath($.path)
-            unlinkImp(
-                joinPath($.path),
+            mkdirImp(
+                joinedPath,
+                {
+                    recursive: $.createContainingDirectories,
+                },
                 (err) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.TUnlinkError {
+                        function createError(): api.TMkdirError {
 
                             switch (errCode) {
+                                //what is the error code for exists????
                                 case "ENOENT":
                                     return ["no entity", null]
                                 default: {
-                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem UNLINK: ${errMessage}`)
+                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
                                     return ["unknown", { message: errMessage }]
                                 }
                             }
@@ -34,11 +39,8 @@ export const f_unlink: api.FUnlink = ($) => {
                     } else {
                         cb(["success", {}])
                     }
-
-
                 }
             )
         }
     )
-
 }

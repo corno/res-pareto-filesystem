@@ -1,5 +1,5 @@
 
-import * as api from "../../interface"
+import * as api from "../../main/api"
 
 import * as pth from "path"
 import { mkdirImp } from "./mkdirImp.p"

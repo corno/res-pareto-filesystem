@@ -1,12 +1,11 @@
-import * as api from "../../interface"
+import * as api from "../api"
 
-import { writeFileImp } from "../private/writeFileImp.p"
+import { writeFileImp } from "../../private/implementations/writeFileImp.p"
+import { createContainingDirectories } from "../../private/implementations/createContainingDirectories.p"
+import { joinPath } from "../../private/implementations/joinPath.p"
+import { concat } from "../../private/implementations/concat.p"
 
-import { createContainingDirectories } from "../private/createContainingDirectories.p"
-import { joinPath } from "../private/joinPath.p"
-import { concat } from "../private/concat.p"
-
-export const f_createWriteStream: api.FCreateWriteStream = ($, $c, $i, $a) => {
+export const icreateWriteStream: api.CcreateWriteStream = ($, $c, $i, $a) => {
 
     //FIX use fs.createWriteStream
     const joinedPath = joinPath($.path)

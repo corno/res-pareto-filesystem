@@ -1,17 +1,18 @@
-import * as api from "../../interface"
+import * as api from "../../main/api"
+import * as mcommon from "glo-pareto-common"
 
-import * as fs from "fs"
+import * as mfs from "fs"
 import { joinPath } from "./joinPath.p"
 
 
 export function writeFileImp(
-    path: api.TPath,
+    path: mcommon.TPath,
     data: string,
     cb: (v: api.TWriteFile_Result) => void
 ) {
     const joinedPath = joinPath(path)
 
-    fs.writeFile(
+    mfs.writeFile(
         joinedPath,
         data,
         {

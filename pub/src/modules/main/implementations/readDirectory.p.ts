@@ -2,14 +2,14 @@
 //import * as fs from "fs"
 import * as pi from "pareto-core-internals"
 
-import * as api from "../../interface"
+import * as api from "../api"
 
-import { joinPath } from "../private/joinPath.p"
-import { createDirNodeData } from "../private/createDirNodeData.p"
-import { readdir } from "../private/readdir.p"
-import { wrapRawDictionary } from "../private/wrapRawDictionary.p"
+import { joinPath } from "../../private/implementations/joinPath.p"
+import { createDirNodeData } from "../../private/implementations/createDirNodeData.p"
+import { readdir } from "../../private/implementations/readdir.p"
+import { wrapRawDictionary } from "../../private/implementations/wrapRawDictionary.p"
 
-export const f_readDirectory: api.FReadDirectory = ($) => {
+export const ireadDirectory: api.CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,
