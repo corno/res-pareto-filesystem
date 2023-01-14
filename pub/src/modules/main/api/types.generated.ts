@@ -18,6 +18,13 @@ export type TAnnotatedReadFileError = MAnnotatedError<TReadFileError>
 
 export type TAnnotatedUnlinkError = MAnnotatedError<TUnlinkError>
 
+export type TAnnotatedWriteFileError = MAnnotatedError<TWriteFileError>
+
+export type TCreateWriteStreamData = {
+    readonly "createContainingDirectories": boolean
+    readonly "path": mcommon.TPath
+}
+
 export type TDirNodeData = {
     readonly "path": string
     readonly "type": 
@@ -37,7 +44,7 @@ export type TMkdirError =
     | ["exist", null]
     | ["no entity", null]
     | ["unknown", {
-        "message": string
+        readonly "message": string
     }]
 
 export type TReadDirectory_Data = {
@@ -55,7 +62,7 @@ export type TReadDirError =
         readonly "message": string
     }]
 
-export type TReadFile_Data = MResult<TReadFileError, string>
+export type TReadFile_Data = MResult<TAnnotatedReadFileError, string>
 
 export type TReadFile_Result = {}
 
@@ -107,6 +114,8 @@ export type AReadDirectory = ($: TReadDirectory_Data) => pt.AsyncValue<TReadDire
 
 export type AUnlink = ($: TUnlink_Data) => pt.AsyncValue<TUnlink_Result>
 
+export type ICreateWriteStream = ($: TCreateWriteStreamData, $c: ($i: IWriteString) => void) => void
+
 export type IReader = {
     "init": ($c: ($i: IStreamConsumer) => void) => void
     "onError": ($: TAnnotatedReadFileError, ) => void
@@ -117,23 +126,6 @@ export type IStreamConsumer = {
     "onEnd": () => void
 }
 
+export type IWriteString = ($: string, ) => void
+
 export type XGetFile = ($: mcommon.TPath, $i: IReader) => void
-
-
-/////
-
-export type TAnnotatedWriteFileError = MAnnotatedError<TWriteFileError>
-
-export type XCreateWriteStream = (
-    $: {
-        readonly "path": mcommon.TPath
-        readonly "createContainingDirectories": boolean
-    },
-    $c: (
-        $i: ($: string) => void
-    ) => void,
-    $i: {
-        readonly "onError": ($: TAnnotatedWriteFileError) => void
-    },
-    $a: <T>($: pt.AsyncValue<T>, $i: ($: T) => void) => void
-) => void
