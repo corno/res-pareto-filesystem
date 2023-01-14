@@ -90,7 +90,7 @@ export const project: NProject.TProject = {
                         }),
                         "MkdirError": taggedUnion({
                             "no entity": nullType(),
-                            "exist": nullType(),
+                            "exists": nullType(),
                             "unknown": ['type', grp({
                                 "message": member(str())
                             })],
@@ -162,7 +162,7 @@ export const project: NProject.TProject = {
                         "WriteFileData": grp({
                             "path": member(er("common", "Path")),
                             "data": member(str()),
-                            "createContainingContainers": member(bln()),
+                            "createContainingDirectories": member(bln()),
                         }),
                         "WriteFileError": taggedUnion({
                             "no entity": nullType(),

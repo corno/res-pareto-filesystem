@@ -41,7 +41,7 @@ export type TMkdir_Data = {
 export type TMkdir_Result = MResult<TAnnotatedMkdirError, null>
 
 export type TMkdirError = 
-    | ["exist", null]
+    | ["exists", null]
     | ["no entity", null]
     | ["unknown", {
         readonly "message": string
@@ -96,7 +96,7 @@ export type TUnlinkError =
 export type TWriteFile_Result = MResult<TAnnotatedWriteFileError, null>
 
 export type TWriteFileData = {
-    readonly "createContainingContainers": boolean
+    readonly "createContainingDirectories": boolean
     readonly "data": string
     readonly "path": mcommon.TPath
 }
