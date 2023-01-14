@@ -3,7 +3,7 @@ import * as pt from "pareto-core-types"
 import * as glo from "./types.generated"
 
 
-export type CcreateWriteStream = glo.ICreateWriteStream
+export type CcreateWriteStream = glo.XCreateWriteStream
 
 export type CgetFile = glo.XGetFile
 

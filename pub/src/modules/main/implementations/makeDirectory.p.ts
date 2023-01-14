@@ -37,7 +37,7 @@ export const imakeDirectory: api.CmakeDirectory = ($) => {
                             path: joinedPath,
                         }])
                     } else {
-                        cb(["success", {}])
+                        cb(["success", null])
                     }
                 }
             )

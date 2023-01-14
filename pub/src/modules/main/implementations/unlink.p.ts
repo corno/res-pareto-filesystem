@@ -33,7 +33,7 @@ export const iunlink: api.Cunlink = ($) => {
                             path: joinedPath,
                         }])
                     } else {
-                        cb(["success", {}])
+                        cb(["success", null])
                     }
 
 

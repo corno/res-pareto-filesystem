@@ -20,6 +20,5 @@
     "glo-pareto-common": "^0.2.0",
     "pareto-core-internals": "^0.11.0"
   },
-  "interface-fingerprint": "e0318d1852db031865858953f1e3a26a9917e6d5",
-  "content-fingerprint": "4125459a3f8c5e2f71d55db62643c290a6d486a3"
+  "content-fingerprint": "fca90771284e7131ac762bbbc7615d1aadd45062"
 }

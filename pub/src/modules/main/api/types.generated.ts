@@ -1,123 +1,105 @@
 import * as pt from "pareto-core-types"
 import * as mcommon from "glo-pareto-common"
 
-export type TAnnotatedReadFileError = {
-    readonly "error":
-    | ["is directory", null]
-    | ["no entity", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-    readonly "path": string
-}
-export type TMkdirError =
-    | ["no entity", null]
-    | ["exists", null]
-    //| ["is directory", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TWriteFileError =
-    | ["no entity", null]
-    | ["is directory", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TUnlinkError =
-    | ["no entity", null]
-    | ["is directory", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TRmdirError =
-    | ["no entity", null]
-    | ["not empty", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TReadFileError =
-    | ["no entity", null]
-    | ["is directory", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TReadDirError =
-    | ["no entity", null]
-    | ["is not directory", null]
-    | ["unknown", {
-        readonly "message": string
-    }]
-export type TAnnotatedFSError<Error> = {
-    readonly "error": Error
+export type MAnnotatedError<AError> = {
+    readonly "error": AError
     readonly "path": string
 }
 
-export type TFSResult<Error, Success> =
-    | ["error", Error]
-    | ["success", Success]
+export type MResult<AError, ASuccess> = 
+    | ["error", AError]
+    | ["success", ASuccess]
 
-export type TMkdir_Data = {
-    readonly path: mcommon.TPath
-    readonly createContainingDirectories: boolean
-}
+export type TAnnotatedMkdirError = MAnnotatedError<TMkdirError>
 
-export type TMkdir_Result = TFSResult<TAnnotatedFSError<TMkdirError>, {}>
+export type TAnnotatedReadDirError = MAnnotatedError<TReadDirError>
 
+export type TAnnotatedReadFileError = MAnnotatedError<TReadFileError>
+
+export type TAnnotatedUnlinkError = MAnnotatedError<TUnlinkError>
 
 export type TDirNodeData = {
     readonly "path": string
-    readonly "type":
-    | ["directory", null]
-    | ["file", null]
-    | ["unknown", null]
+    readonly "type": 
+        | ["directory", null]
+        | ["file", null]
+        | ["unknown", null]
 }
+
+export type TMkdir_Data = {
+    readonly "createContainingDirectories": boolean
+    readonly "path": mcommon.TPath
+}
+
+export type TMkdir_Result = MResult<TAnnotatedMkdirError, null>
+
+export type TMkdirError = 
+    | ["exist", null]
+    | ["no entity", null]
+    | ["unknown", {
+        "message": string
+    }]
 
 export type TReadDirectory_Data = {
     readonly "path": mcommon.TPath
 }
 
-export type TReadDirectory_Success = pt.Dictionary<TDirNodeData>
+export type TReadDirectory_Result = MResult<TAnnotatedReadDirError, pt.Dictionary<TDirNodeData>>
 
-export type TAnnotatedReadDirectoryError = TAnnotatedFSError<TReadDirError>
+export type TReadDirectory_Success = {}
 
+export type TReadDirError = 
+    | ["is not directory", null]
+    | ["no entity", null]
+    | ["unknown", {
+        readonly "message": string
+    }]
 
-export type TReadDirectory_Result = TFSResult<
-    TAnnotatedReadDirectoryError,
-    TReadDirectory_Success
->
+export type TReadFile_Data = MResult<TReadFileError, string>
 
+export type TReadFile_Result = {}
 
-export type TReadFile_Result = TFSResult<
-    TAnnotatedFSError<TReadFileError>,
-    string
->
+export type TReadFileError = 
+    | ["is directory", null]
+    | ["no entity", null]
+    | ["unknown", {
+        readonly "message": string
+    }]
 
-export type TReadFile_Data = {
+export type TRmdirError = 
+    | ["no entity", null]
+    | ["not empty", null]
+    | ["unknown", {
+        readonly "message": string
+    }]
+
+export type TUnlink_Data = {
     readonly "path": mcommon.TPath
 }
 
+export type TUnlink_Result = MResult<TAnnotatedUnlinkError, null>
 
+export type TUnlinkError = 
+    | ["is directory", null]
+    | ["no entity", null]
+    | ["unknown", {
+        readonly "message": string
+    }]
 
-export type TUnlink_Data = {
-    readonly path: mcommon.TPath
-}
+export type TWriteFile_Result = MResult<TAnnotatedWriteFileError, null>
 
-export type TUnlink_Result = TFSResult<TAnnotatedFSError<TUnlinkError>, {}>
-
-
-export type TWriteFile_Result = TFSResult<TAnnotatedFSError<TWriteFileError>, {}>
-
-
-//this type exists because it is used by lib-pareto-filesystem
 export type TWriteFileData = {
-    readonly path: mcommon.TPath,
-    readonly data: string,
-    /**
-     * this property is added because getting the dirname of a path is string inspection and should not be done by
-     * a caller of this function
-     */
-    readonly createContainingDirectories: boolean
+    readonly "createContainingContainers": boolean
+    readonly "data": string
+    readonly "path": mcommon.TPath
 }
+
+export type TWriteFileError = 
+    | ["is directory", null]
+    | ["no entity", null]
+    | ["unknown", {
+        readonly "message": string
+    }]
 
 export type AMakeDirectory = ($: TMkdir_Data) => pt.AsyncValue<TMkdir_Result>
 
@@ -127,18 +109,22 @@ export type AUnlink = ($: TUnlink_Data) => pt.AsyncValue<TUnlink_Result>
 
 export type IReader = {
     "init": ($c: ($i: IStreamConsumer) => void) => void
-    "onError": ($: TAnnotatedReadFileError,) => void
+    "onError": ($: TAnnotatedReadFileError, ) => void
 }
 
 export type IStreamConsumer = {
-    "onData": ($: string,) => void
+    "onData": ($: string, ) => void
     "onEnd": () => void
 }
 
 export type XGetFile = ($: mcommon.TPath, $i: IReader) => void
 
 
-export type FCreateWriteStream = (
+/////
+
+export type TAnnotatedWriteFileError = MAnnotatedError<TWriteFileError>
+
+export type XCreateWriteStream = (
     $: {
         readonly "path": mcommon.TPath
         readonly "createContainingDirectories": boolean
@@ -147,14 +133,7 @@ export type FCreateWriteStream = (
         $i: ($: string) => void
     ) => void,
     $i: {
-        readonly "onError": IOnWriteFileError
+        readonly "onError": ($: TAnnotatedWriteFileError) => void
     },
     $a: <T>($: pt.AsyncValue<T>, $i: ($: T) => void) => void
 ) => void
-
-
-export type IOnFSError<T> = ($: TAnnotatedFSError<T>) => void
-
-export type IOnWriteFileError = IOnFSError<TWriteFileError>
-
-export type ICreateWriteStream = FCreateWriteStream

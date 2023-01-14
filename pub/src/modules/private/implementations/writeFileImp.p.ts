@@ -42,7 +42,7 @@ export function writeFileImp(
                     path: joinedPath
                 }])
             } else {
-                cb(["success", {}])
+                cb(["success", null])
 
             }
         }
