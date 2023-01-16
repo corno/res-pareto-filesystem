@@ -116,11 +116,11 @@ export type IReader = {
 }
 
 export type IStreamConsumer = {
-    "onData": ($: string, ) => void
+    "onData": ($: mcommon.TString, ) => void
     "onEnd": () => void
 }
 
-export type IWriteString = ($: string, ) => void
+export type IWriteString = ($: mcommon.TString, ) => void
 
 export type AMakeDirectory = ($: TMkdir_Data) => pt.AsyncValue<TMkdir_Result>
 

@@ -3,14 +3,13 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+    null_,
     reference as ref,
     boolean as bln,
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
@@ -41,26 +40,26 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "Success": null,
                     }),
                     'type': taggedUnion({
-                        "error": ['type', ['parameter', "Error"]],
-                        "success": ['type', ['parameter', "Success"]],
+                        "error": ['parameter', "Error"],
+                        "success": ['parameter', "Success"],
                     }),
                 },
             }),
             'types': types({
                 "AnnotatedReadDirError": template("AnnotatedError", {
-                    "Error": type(ref("ReadDirError")),
+                    "Error": ref("ReadDirError"),
                 }),
                 "AnnotatedReadFileError": template("AnnotatedError", {
-                    "Error": type(ref("ReadFileError")),
+                    "Error": ref("ReadFileError"),
                 }),
                 "AnnotatedMkdirError": template("AnnotatedError", {
-                    "Error": type(ref("MkdirError")),
+                    "Error": ref("MkdirError"),
                 }),
                 "AnnotatedUnlinkError": template("AnnotatedError", {
-                    "Error": type(ref("UnlinkError")),
+                    "Error": ref("UnlinkError"),
                 }),
                 "AnnotatedWriteFileError": template("AnnotatedError", {
-                    "Error": type(ref("WriteFileError")),
+                    "Error": ref("WriteFileError"),
                 }),
                 "CreateWriteStreamData": group({
                     "path": member(er("common", "Path")),
@@ -69,8 +68,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 // "AnnotatedReadFileError": group({
                 //     "path": member(str()),
                 //     "error": member(taggedUnion({
-                //         "no entity": nullType(),
-                //         "is directory": nullType(),
+                //         "no entity": null_(),
+                //         "is directory": null_(),
                 //         "unknown": type(group({
                 //             "message": member(str())
                 //         })),
@@ -79,80 +78,80 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "DirNodeData": grp({
                     "path": member(str()),
                     "type": member(taggedUnion({
-                        "directory": nullType(),
-                        "file": nullType(),
-                        "unknown": nullType(),
+                        "directory": null_(),
+                        "file": null_(),
+                        "unknown": null_(),
                     })),
                 }),
                 "MkdirError": taggedUnion({
-                    "no entity": nullType(),
-                    "exists": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "exists": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
                 "Mkdir_Data": grp({
                     "path": member(er("common", "Path")),
                     "createContainingDirectories": member(bln()),
                 }),
                 "Mkdir_Result": template("Result", {
-                    "Error": type(ref("AnnotatedMkdirError")),
-                    "Success": nullType(),
+                    "Error": ref("AnnotatedMkdirError"),
+                    "Success": null_(),
                 }),
                 "ReadDirectory_Data": grp({
                     "path": member(er("common", "Path")),
                 }),
                 "ReadDirectory_Result": template("Result", {
-                    "Error": type(ref("AnnotatedReadDirError")),
-                    "Success": type(dictionary(ref("DirNodeData"))),
+                    "Error": ref("AnnotatedReadDirError"),
+                    "Success": dictionary(ref("DirNodeData")),
                 }),
 
                 "ReadDirectory_Success": grp({}),
                 "ReadDirError": taggedUnion({
-                    "no entity": nullType(),
-                    "is not directory": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "is not directory": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
                 "ReadFile_Data": template("Result", {
-                    "Error": type(ref("AnnotatedReadFileError")),
-                    "Success": type(str()),
+                    "Error": ref("AnnotatedReadFileError"),
+                    "Success": str(),
                 }),
 
                 "ReadFile_Result": grp({}),
                 "ReadFileError": taggedUnion({
-                    "no entity": nullType(),
-                    "is directory": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "is directory": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
                 "RmdirError": taggedUnion({
-                    "no entity": nullType(),
-                    "not empty": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "not empty": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
                 "UnlinkError": taggedUnion({
-                    "no entity": nullType(),
-                    "is directory": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "is directory": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
                 "Unlink_Data": grp({
                     "path": member(er("common", "Path")),
                 }),
                 "Unlink_Result": template("Result", {
-                    "Error": type(ref("AnnotatedUnlinkError")),
-                    "Success": nullType(),
+                    "Error": ref("AnnotatedUnlinkError"),
+                    "Success": null_(),
                 }),
 
                 "WriteFile_Result": template("Result", {
-                    "Error": type(ref("AnnotatedWriteFileError")),
-                    "Success": nullType(),
+                    "Error": ref("AnnotatedWriteFileError"),
+                    "Success": null_(),
                 }),
 
                 "WriteFileData": grp({
@@ -161,21 +160,21 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "createContainingDirectories": member(bln()),
                 }),
                 "WriteFileError": taggedUnion({
-                    "no entity": nullType(),
-                    "is directory": nullType(),
-                    "unknown": ['type', grp({
+                    "no entity": null_(),
+                    "is directory": null_(),
+                    "unknown": grp({
                         "message": member(str())
-                    })],
+                    }),
                 }),
             }),
             'interfaces': d({
                 "WriteString": ['method', {
-                    'data': ['type', string()],
+                    'data': externalTypeReference("common", "String"),
                     'interface': ['null', null]
 
                 }],
                 "CreateWriteStream": ['method', {
-                    'data': ['type', reference("CreateWriteStreamData")],
+                    'data': typeReference("CreateWriteStreamData"),
                     'interface': ['set', {
                         'interface': "WriteString"
                     }]
@@ -183,11 +182,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "StreamConsumer": ['group', {
                     'members': d({
                         "onData": ['method', {
-                            'data': ['type', string()],
+                            'data': externalTypeReference("common", "String"),
                             'interface': ['null', null],
                         }],
                         "onEnd": ['method', {
-                            'data': ['null', null],
+                            'data': null,
                             'interface': ['null', null],
                         }],
                     }),
@@ -195,13 +194,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "Reader": ['group', {
                     'members': d({
                         "init": ['method', {
-                            'data': ['null', null],
+                            'data': null,
                             'interface': ['set', {
                                 'interface': "StreamConsumer"
                             }],
                         }],
                         "onError": ['method', {
-                            'data': ['type', reference("AnnotatedReadFileError")],
+                            'data': typeReference("AnnotatedReadFileError"),
                             'interface': ['null', null],
                         }],
                     })
@@ -210,13 +209,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "MakeDirectory": _function(reference("Mkdir_Data"), reference("Mkdir_Result"), true),
-            "ReadDirectory": _function(reference("ReadDirectory_Data"), reference("ReadDirectory_Result"), true),
-            "Unlink": _function(reference("Unlink_Data"), reference("Unlink_Result"), true),
+            "MakeDirectory": _function(typeReference("Mkdir_Data"), typeReference("Mkdir_Result"), true),
+            "ReadDirectory": _function(typeReference("ReadDirectory_Data"), typeReference("ReadDirectory_Result"), true),
+            "Unlink": _function(typeReference("Unlink_Data"), typeReference("Unlink_Result"), true),
         }),
         'callbacks': d({
             "GetFile": {
-                'data': ['type', externalReference("common", "Path")],
+                'data': externalTypeReference("common", "Path"),
                 'interface': "Reader"
             }
         }),
@@ -230,12 +229,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'interface': "CreateWriteStream"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     // 'configuration data': ['type', group({
                     //     'context path': member(er("common", "Path")),
                     // })],
                     'dependencies': d({
-                        "onError": ['procedure', ['type', reference("AnnotatedWriteFileError")]],
+                        "onError": ['procedure', typeReference("AnnotatedWriteFileError")],
                     }),
                 }]
             },
