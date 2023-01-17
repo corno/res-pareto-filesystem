@@ -5,7 +5,7 @@ import * as api from "../api"
 import { joinPath } from "../../private/implementations/joinPath.p"
 import { unlinkImp } from "../../private/implementations/unlinkImp.p"
 
-export const iunlink: api.Cunlink = ($) => {
+export const $$: api.Cunlink = ($) => {
     return pi.wrapAsyncValueImp(
         true,
         (cb) => {

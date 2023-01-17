@@ -9,7 +9,7 @@ import { createDirNodeData } from "../../private/implementations/createDirNodeDa
 import { readdir } from "../../private/implementations/readdir.p"
 import { wrapRawDictionary } from "../../private/implementations/wrapRawDictionary.p"
 
-export const ireadDirectory: api.CreadDirectory = ($) => {
+export const $$: api.CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,

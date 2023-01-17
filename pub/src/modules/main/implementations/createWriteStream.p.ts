@@ -5,7 +5,7 @@ import { createContainingDirectories } from "../../private/implementations/creat
 import { joinPath } from "../../private/implementations/joinPath.p"
 import { concat } from "../../private/implementations/concat.p"
 
-export const icreateWriteStream: api.CcreateWriteStream = ($d) => {
+export const $$: api.CcreateWriteStream = ($d) => {
     return ($, $c) => {
         //FIX use fs.createWriteStream
         const joinedPath = joinPath($.path)

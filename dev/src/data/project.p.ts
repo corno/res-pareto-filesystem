@@ -11,7 +11,6 @@ export const $: mproject.TProject = {
     'modules': d({
         "main": {
             'definition': api,
-            'implementation': {}
 
         },
     }),

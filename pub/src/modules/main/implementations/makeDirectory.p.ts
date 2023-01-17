@@ -5,7 +5,7 @@ import * as api from "../api"
 import { joinPath } from "../../private/implementations/joinPath.p"
 import { mkdirImp } from "../../private/implementations/mkdirImp.p"
 
-export const imakeDirectory: api.CmakeDirectory = ($) => {
+export const $$: api.CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         true,

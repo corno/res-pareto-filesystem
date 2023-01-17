@@ -11,7 +11,7 @@ import { readFileImp } from "../../private/implementations/readFileImp.p"
 //     onEnd: () => void
 // }
 
-export const igetFile: api.CgetFile = ($, $i) => {
+export const $$: api.CgetFile = ($, $i) => {
     const joinedPath = joinPath($)
 
     readFileImp(
