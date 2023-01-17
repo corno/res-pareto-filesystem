@@ -26,17 +26,17 @@ export const ireadDirectory: api.CreadDirectory = ($) => {
                         function createError(): api.TReadDirError {
 
                             switch (errCode) {
-                                case "ENOENT":
-                                    return ["no entity", null]
-                                case "ENOTDIR":
-                                    return ["is not directory", null]
+                                case 'ENOENT':
+                                    return ['no entity',  null]
+                                case 'ENOTDIR':
+                                    return ['is not directory',  null]
                                 default: {
                                     console.error(`DEV TODO: ADD THIS OPTION TO pareto-filesystem READDIR: ${errMessage}`)
-                                    return ["unknown", { message: errMessage }]
+                                    return ['unknown',  { message: errMessage }]
                                 }
                             }
                         }
-                        cb(["error", {
+                        cb(['error',  {
                             error: createError(),
                             path: joinedPath
                         }])
@@ -46,7 +46,7 @@ export const ireadDirectory: api.CreadDirectory = ($) => {
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)
                         })
-                        cb(["success", wrapRawDictionary(values)])
+                        cb(['success',  wrapRawDictionary(values)])
                     }
                 }
             )

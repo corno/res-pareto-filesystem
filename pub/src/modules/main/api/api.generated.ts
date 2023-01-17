@@ -1,10 +1,10 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 
 import * as glo from "./types.generated"
 
 
 export type CcreateWriteStream = ($d: {
-    readonly "pr_onError": pt.Procedure<glo.TAnnotatedWriteFileError>
+    readonly 'pr_onError': pt.Procedure<glo.TAnnotatedWriteFileError>
 }) => glo.ICreateWriteStream
 
 export type CgetFile = glo.XGetFile

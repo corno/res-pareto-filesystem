@@ -1,6 +1,6 @@
-import * as pt from "pareto-core-types"
-import * as pr from "pareto-core-raw"
-import * as pl from "pareto-core-lib"
+import * as pt from 'pareto-core-types'
+import * as pr from 'pareto-core-raw'
+import * as pl from 'pareto-core-lib'
 import * as tst from "lib-pareto-test"
 
 import { test as main_createWriteStream } from "../modules/main/createWriteStream.p"
@@ -10,11 +10,11 @@ import { test as main_readDirectory } from "../modules/main/readDirectory.p"
 import { test as main_unlink } from "../modules/main/unlink.p"
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
-    "main": pr.wrapRawDictionary({
-        "createWriteStream": main_createWriteStream,
-        "getFile": main_getFile,
-        "makeDirectory": main_makeDirectory,
-        "readDirectory": main_readDirectory,
-        "unlink": main_unlink,
+    'main': pr.wrapRawDictionary({
+        'createWriteStream': main_createWriteStream,
+        'getFile': main_getFile,
+        'makeDirectory': main_makeDirectory,
+        'readDirectory': main_readDirectory,
+        'unlink': main_unlink,
     }),
 }).asyncMap(($, key) => $.asyncMap(($, key) => $()))

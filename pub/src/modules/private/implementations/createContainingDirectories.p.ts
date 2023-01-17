@@ -24,14 +24,14 @@ export function createContainingDirectories(
                     const errMessage = err.message
                     switch (errCode) {
                         //what is the error code for exists????
-                        // case "???":
+                        // case '???':
                         //     onDone()
                         //     break
-                        case "ENOENT":
-                            onError(["no entity", null])
+                        case 'ENOENT':
+                            onError(['no entity',  null])
                             break
                         default: {
-                            onError(["unknown", { message: errMessage }])
+                            onError(['unknown',  { message: errMessage }])
                         }
                     }
                 }

@@ -27,22 +27,22 @@ export function writeFileImp(
                 function createError(): api.TWriteFileError {
 
                     switch (errCode) {
-                        case "ENOENT":
-                            return ["no entity", null]
-                        case "EISDIR":
-                            return ["is directory", null]
+                        case 'ENOENT':
+                            return ['no entity',  null]
+                        case 'EISDIR':
+                            return ['is directory',  null]
                         default: {
                             console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${errMessage}`)
-                            return ["unknown", { message: errMessage }]
+                            return ['unknown',  { message: errMessage }]
                         }
                     }
                 }
-                cb(["error", {
+                cb(['error',  {
                     error: createError(),
                     path: joinedPath
                 }])
             } else {
-                cb(["success", null])
+                cb(['success',  null])
 
             }
         }

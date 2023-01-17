@@ -24,20 +24,20 @@ export const imakeDirectory: api.CmakeDirectory = ($) => {
 
                             switch (errCode) {
                                 //what is the error code for exists????
-                                case "ENOENT":
-                                    return ["no entity", null]
+                                case 'ENOENT':
+                                    return ['no entity',  null]
                                 default: {
                                     console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
-                                    return ["unknown", { message: errMessage }]
+                                    return ['unknown',  { message: errMessage }]
                                 }
                             }
                         }
-                        cb(["error", {
+                        cb(['error',  {
                             error: createError(),
                             path: joinedPath,
                         }])
                     } else {
-                        cb(["success", null])
+                        cb(['success',  null])
                     }
                 }
             )

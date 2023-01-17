@@ -24,7 +24,7 @@ import { writeFileImp } from "../../private/implementations/writeFileImp.p"
 //                         )
 //                     },
 //                     ($) => {
-//                         cb(["error", {
+//                         cb(['error',  {
 //                             error: $,
 //                             path: joinedPath,
 //                         }])

@@ -6,9 +6,9 @@ export function createDirNodeData(path: string, dirent: fs.Dirent): api.TDirNode
     return {
         path: path,
         type: dirent.isDirectory()
-            ? ["directory", null]
+            ? ['directory',  null]
             : dirent.isFile()
-                ? ["file", null] :
-                ["unknown", null]
+                ? ['file',  null] :
+                ['unknown',  null]
     }
 }

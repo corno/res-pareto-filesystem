@@ -8,9 +8,9 @@ import { iunlink } from "./implementations/unlink.p"
 export * from "./api"
 
 export const $a: API = {
-    "createWriteStream": icreateWriteStream,
-    "getFile": igetFile,
-    "makeDirectory": imakeDirectory,
-    "readDirectory": ireadDirectory,
-    "unlink": iunlink,
+    'createWriteStream': icreateWriteStream,
+    'getFile': igetFile,
+    'makeDirectory': imakeDirectory,
+    'readDirectory': ireadDirectory,
+    'unlink': iunlink,
 }

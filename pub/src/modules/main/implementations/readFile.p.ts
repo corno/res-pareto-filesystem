@@ -18,9 +18,9 @@ import { readFileImp } from "../../private/implementations/readFileImp.p"
 //                 },
 //                 (err, data) => {
 //                     if (err === null) {
-//                         cb(["success", data])
+//                         cb(['success',  data])
 //                     } else {
-//                         cb(["error", {
+//                         cb(['error',  {
 //                             error: createFileError(err),
 //                             path: joinedPath
 //                         }])
