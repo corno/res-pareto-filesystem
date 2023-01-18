@@ -1,5 +1,5 @@
 
-import * as api from "../../main/api"
+import * as mmain from "../../main"
 
 import * as pth from "path"
 import { mkdirImp } from "./mkdirImp.p"
@@ -7,7 +7,7 @@ import { mkdirImp } from "./mkdirImp.p"
 export function createContainingDirectories(
     path: string,
     onDone: () => void,
-    onError: ($: api.TWriteFileError) => void
+    onError: ($: mmain.TWriteFileError) => void
 ) {
 
     mkdirImp(
