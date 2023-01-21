@@ -2,8 +2,8 @@ import * as pi from "pareto-core-internals"
 
 import * as api from "../api"
 
-import { joinPath } from "../../private/implementations/joinPath.p"
-import { unlinkImp } from "../../private/implementations/unlinkImp.p"
+import { joinPath } from "../native/joinPath.p"
+import { unlinkImp } from "../native/unlinkImp.p"
 
 export const $$: api.Cunlink = ($) => {
     return pi.wrapAsyncValueImp(

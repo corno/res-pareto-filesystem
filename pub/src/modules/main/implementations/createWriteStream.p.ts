@@ -1,9 +1,9 @@
 import * as api from "../api"
 
-import { writeFileImp } from "../../private/implementations/writeFileImp.p"
-import { createContainingDirectories } from "../../private/implementations/createContainingDirectories.p"
-import { joinPath } from "../../private/implementations/joinPath.p"
-import { concat } from "../../private/implementations/concat.p"
+import { writeFileImp } from "../native/writeFileImp.p"
+import { createContainingDirectories } from "../native/createContainingDirectories.p"
+import { joinPath } from "../native/joinPath.p"
+import { concat } from "../native/concat.p"
 
 export const $$: api.CcreateWriteStream = ($d) => {
     return ($, $c) => {
