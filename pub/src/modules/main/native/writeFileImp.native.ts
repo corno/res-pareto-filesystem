@@ -2,7 +2,7 @@ import * as api from "../../main/api"
 import * as mcommon from "glo-pareto-common"
 
 import * as mfs from "fs"
-import { joinPath } from "./joinPath.p"
+import { joinPath } from "./joinPath.native"
 
 
 export function writeFileImp(

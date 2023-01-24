@@ -4,10 +4,10 @@ import * as pi from "pareto-core-internals"
 
 import * as api from "../api"
 
-import { joinPath } from "../native/joinPath.p"
-import { createDirNodeData } from "../native/createDirNodeData.p"
-import { readdir } from "../native/readdir.p"
-import { wrapRawDictionary } from "../native/wrapRawDictionary.p"
+import { joinPath } from "../native/joinPath.native"
+import { createDirNodeData } from "../native/createDirNodeData.native"
+import { readdir } from "../native/readdir.native"
+import { wrapRawDictionary } from "../native/wrapRawDictionary.native"
 
 export const $$: api.CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)

@@ -2,9 +2,9 @@ import * as pi from "pareto-core-internals"
 
 import * as api from "../api"
 
-import { createContainingDirectories } from "../native/createContainingDirectories.p"
-import { joinPath } from "../native/joinPath.p"
-import { writeFileImp } from "../native/writeFileImp.p"
+import { createContainingDirectories } from "../native/createContainingDirectories.native"
+import { joinPath } from "../native/joinPath.native"
+import { writeFileImp } from "../native/writeFileImp.native"
 
 // export const f_writeFile: api.FWriteFile = ($) => {
 //     const path = $.path

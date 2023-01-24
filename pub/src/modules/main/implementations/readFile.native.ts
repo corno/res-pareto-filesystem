@@ -2,9 +2,9 @@ import * as pi from "pareto-core-internals"
 
 import * as api from "../api"
 
-import { joinPath } from "../native/joinPath.p"
-import { createFileError } from "../native/createReadFileError.p"
-import { readFileImp } from "../native/readFileImp.p"
+import { joinPath } from "../native/joinPath.native"
+import { createFileError } from "../native/createReadFileError.native"
+import { readFileImp } from "../native/readFileImp.native"
 
 // export const f_readFile: api.FReadFile = ($) => {
 //     const joinedPath = joinPath($.path)

@@ -2,8 +2,8 @@ import * as pi from "pareto-core-internals"
 
 import * as api from "../api"
 
-import { joinPath } from "../native/joinPath.p"
-import { mkdirImp } from "../native/mkdirImp.p"
+import { joinPath } from "../native/joinPath.native"
+import { mkdirImp } from "../native/mkdirImp.native"
 
 export const $$: api.CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)

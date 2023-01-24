@@ -2,7 +2,7 @@
 import * as mmain from "../../main"
 
 import * as pth from "path"
-import { mkdirImp } from "./mkdirImp.p"
+import { mkdirImp } from "./mkdirImp.native"
 
 export function createContainingDirectories(
     path: string,
