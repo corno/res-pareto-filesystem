@@ -17,8 +17,8 @@
   ],
   "version": "0.32.0",
   "dependencies": {
-    "glo-pareto-common": "^0.6.0",
+    "glo-pareto-common": "^0.7.0",
     "pareto-core-internals": "^0.11.0"
   },
-  "content-fingerprint": "678380a1929925884e546948eb8b77d763f37a99"
+  "content-fingerprint": "65af6d281baad44e0ddbfa598f8478952c016340"
 }

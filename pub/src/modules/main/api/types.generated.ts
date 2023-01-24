@@ -120,9 +120,9 @@ export type IStreamConsumer = {
 
 export type IWriteString = ($: mcommon.TString, ) => void
 
-export type FCreateWriteStream = ($: TCreateWriteStreamData,$c: ($i: IWriteString) => void,) => void
+export type FCreateWriteStream = ($: TCreateWriteStreamData, $c: ($i: IWriteString) => void,) => void
 
-export type FGetFile = ($: mcommon.TPath,$i: IReader,) => void
+export type FGetFile = ($: mcommon.TPath, $i: IReader,) => void
 
 export type FHandleError = ($: TAnnotatedWriteFileError,) => void
 

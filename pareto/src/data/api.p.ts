@@ -9,25 +9,15 @@ import {
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, interfaceReference, procedure
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, interfaceReference, procedure, externalNamespacedTypeReference, nmespacedTypeReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 
-
-export function callback(data: mglossary.TTypeReference, inf: mglossary.TInterfaceReference): mglossary.TFunction {
-    return {
-        'return type': ['nothing', null],
-        'data': data,
-        'managed input interface': null,
-        'output interface': inf,
-    }
-}
-
 const d = pr.wrapRawDictionary
+const a = pr.wrapRawArray
 
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
@@ -180,14 +170,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             'interfaces': d({
                 "WriteString": ['method', {
-                    'data': externalTypeReference("common", "String"),
+                    'data': externalNamespacedTypeReference("common", "String"),
                     'interface': null
 
                 }],
                 "StreamConsumer": ['group', {
                     'members': d({
                         "onData": ['method', {
-                            'data': externalTypeReference("common", "String"),
+                            'data': externalNamespacedTypeReference("common", "String"),
                             'interface': null,
                         }],
                         "onEnd": ['method', {
@@ -201,11 +191,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "init": ['method', {
                             'data': null,
                             'interface': ['reference', {
+                                'namespaces': a([]),
                                 'interface': "StreamConsumer"
                             }],
                         }],
                         "onError": ['method', {
-                            'data': typeReference("AnnotatedReadFileError"),
+                            'data': nmespacedTypeReference("AnnotatedReadFileError"),
                             'interface': null,
                         }],
                     })
