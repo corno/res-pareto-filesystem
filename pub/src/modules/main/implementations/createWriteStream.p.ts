@@ -23,14 +23,14 @@ export const $$: api.CcreateWriteStream = ($d) => {
                         tmp,
                         ($) => {
                             if ($[0] === "error") {
-                                $d.pr_onError($[1])
+                                $d.onError($[1])
                             }
                         }
                     )
 
                 },
                 ($) => {
-                    $d.pr_onError({
+                    $d.onError({
                         error: $,
                         path: joinedPath,
                     })

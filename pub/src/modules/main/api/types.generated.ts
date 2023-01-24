@@ -108,8 +108,6 @@ export type TWriteFileError =
         readonly 'message': string
     }]
 
-export type ICreateWriteStream = ($: TCreateWriteStreamData, $c: ($i: IWriteString) => void) => void
-
 export type IReader = {
     'init': ($c: ($i: IStreamConsumer) => void) => void
     'onError': ($: TAnnotatedReadFileError, ) => void
@@ -122,10 +120,14 @@ export type IStreamConsumer = {
 
 export type IWriteString = ($: mcommon.TString, ) => void
 
-export type AMakeDirectory = ($: TMkdir_Data) => pt.AsyncValue<TMkdir_Result>
+export type FCreateWriteStream = ($: TCreateWriteStreamData,$c: ($i: IWriteString) => void,) => void
 
-export type AReadDirectory = ($: TReadDirectory_Data) => pt.AsyncValue<TReadDirectory_Result>
+export type FGetFile = ($: mcommon.TPath,$i: IReader,) => void
 
-export type AUnlink = ($: TUnlink_Data) => pt.AsyncValue<TUnlink_Result>
+export type FHandleError = ($: TAnnotatedWriteFileError,) => void
 
-export type XGetFile = ($: mcommon.TPath, $i: IReader) => void
+export type FMakeDirectory = ($: TMkdir_Data,) => pt.AsyncValue<TMkdir_Result>
+
+export type FReadDirectory = ($: TReadDirectory_Data,) => pt.AsyncValue<TReadDirectory_Result>
+
+export type FUnlink = ($: TUnlink_Data,) => pt.AsyncValue<TUnlink_Result>

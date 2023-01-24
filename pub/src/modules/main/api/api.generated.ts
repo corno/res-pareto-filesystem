@@ -4,16 +4,16 @@ import * as glo from "./types.generated"
 
 
 export type CcreateWriteStream = ($d: {
-    readonly 'pr_onError': pt.Procedure<glo.TAnnotatedWriteFileError>
-}) => glo.ICreateWriteStream
+    readonly 'onError': glo.FHandleError
+}) => glo.FCreateWriteStream
 
-export type CgetFile = glo.XGetFile
+export type CgetFile = glo.FGetFile
 
-export type CmakeDirectory = glo.AMakeDirectory
+export type CmakeDirectory = glo.FMakeDirectory
 
-export type CreadDirectory = glo.AReadDirectory
+export type CreadDirectory = glo.FReadDirectory
 
-export type Cunlink = glo.AUnlink
+export type Cunlink = glo.FUnlink
 
 export type API = {
     createWriteStream: CcreateWriteStream

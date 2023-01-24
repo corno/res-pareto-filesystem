@@ -9,12 +9,23 @@ import {
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, interfaceReference, procedure
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
+
+
+export function callback(data: mglossary.TTypeReference, inf: mglossary.TInterfaceReference): mglossary.TFunction {
+    return {
+        'return type': ['nothing', null],
+        'data': data,
+        'managed input interface': null,
+        'output interface': inf,
+    }
+}
 
 const d = pr.wrapRawDictionary
 
@@ -170,24 +181,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             'interfaces': d({
                 "WriteString": ['method', {
                     'data': externalTypeReference("common", "String"),
-                    'interface': ['null', null]
+                    'interface': null
 
-                }],
-                "CreateWriteStream": ['method', {
-                    'data': typeReference("CreateWriteStreamData"),
-                    'interface': ['set', {
-                        'interface': "WriteString"
-                    }]
                 }],
                 "StreamConsumer": ['group', {
                     'members': d({
                         "onData": ['method', {
                             'data': externalTypeReference("common", "String"),
-                            'interface': ['null', null],
+                            'interface': null,
                         }],
                         "onEnd": ['method', {
                             'data': null,
-                            'interface': ['null', null],
+                            'interface': null,
                         }],
                     }),
                 }],
@@ -195,13 +200,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'members': d({
                         "init": ['method', {
                             'data': null,
-                            'interface': ['set', {
+                            'interface': ['reference', {
                                 'interface': "StreamConsumer"
                             }],
                         }],
                         "onError": ['method', {
                             'data': typeReference("AnnotatedReadFileError"),
-                            'interface': ['null', null],
+                            'interface': null,
                         }],
                     })
                 }]
@@ -212,57 +217,57 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "MakeDirectory": _function(typeReference("Mkdir_Data"), typeReference("Mkdir_Result"), true),
             "ReadDirectory": _function(typeReference("ReadDirectory_Data"), typeReference("ReadDirectory_Result"), true),
             "Unlink": _function(typeReference("Unlink_Data"), typeReference("Unlink_Result"), true),
+            "GetFile": callback(externalTypeReference("common", "Path"), interfaceReference("Reader")),
+            "CreateWriteStream": {
+                'return type': ['nothing', null],
+                'data': typeReference("CreateWriteStreamData"),
+                'output interface': null,
+                'managed input interface': interfaceReference("WriteString")
+            },
+            "HandleError": procedure(typeReference("AnnotatedWriteFileError")),
         }),
-        'callbacks': d({
-            "GetFile": {
-                'data': externalTypeReference("common", "Path"),
-                'interface': "Reader"
-            }
-        }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({}),
         'algorithms': d({
             "createWriteStream": {
-                'definition': ['interface', {
-                    'interface': "CreateWriteStream"
-                }],
+                'definition': {
+                    'function': "CreateWriteStream"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     // 'configuration data': ['type', group({
                     //     'context path': member(er("common", "Path")),
                     // })],
                     'dependencies': d({
-                        "onError": ['procedure', typeReference("AnnotatedWriteFileError")],
+                        "onError": {
+                            'function': "HandleError"
+                        },
                     }),
                 }]
             },
             "getFile": {
-                'definition': ['callback', {
-                    'callback': "GetFile"
-                }],
+                'definition':  {
+                    'function': "GetFile"
+                },
                 'type': ['reference', null]
             },
             "makeDirectory": {
-                'definition': ['function', {
+                'definition': {
                     'function': "MakeDirectory",
-                    'async': true,
-                }],
+                },
                 'type': ['reference', null]
             },
             "readDirectory": {
-                'definition': ['function', {
+                'definition': {
                     'function': "ReadDirectory",
-                    'async': true,
-                }],
+                },
                 'type': ['reference', null]
             },
             "unlink": {
-                'definition': ['function', {
+                'definition': {
                     'function': "Unlink",
-                    'async': true,
-                }],
+                },
                 'type': ['reference', null]
             }
         })
