@@ -184,10 +184,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             'namespaces': a([]),
                             'interface': "StreamConsumer"
                         }], true),
-                        "onError": ['method', {
-                            'data': nmespacedTypeReference("AnnotatedReadFileError"),
-                            'interface': null,
-                        }],
+                        "onError": method( nmespacedTypeReference("AnnotatedReadFileError")),
                     })
                 }]
             }),
