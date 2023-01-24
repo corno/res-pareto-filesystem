@@ -9,7 +9,7 @@ import {
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, interfaceReference, procedure, externalNamespacedTypeReference, nmespacedTypeReference, callback
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, interfaceReference, procedure, externalNamespacedTypeReference, nmespacedTypeReference, callback, method
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
@@ -24,6 +24,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common"
         }),
+        'parameters': d({}),
         'namespace': {
             'templates': d({
                 "AnnotatedError": {
@@ -169,32 +170,20 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
             }),
             'interfaces': d({
-                "WriteString": ['method', {
-                    'data': externalNamespacedTypeReference("common", "String"),
-                    'interface': null
-
-                }],
+                "WriteString": method(externalNamespacedTypeReference("common", "String")),
                 "StreamConsumer": ['group', {
                     'members': d({
-                        "onData": ['method', {
-                            'data': externalNamespacedTypeReference("common", "String"),
-                            'interface': null,
-                        }],
-                        "onEnd": ['method', {
-                            'data': null,
-                            'interface': null,
-                        }],
+                        "onData": method(externalNamespacedTypeReference("common", "String")),
+                        "onEnd": method(null),
                     }),
                 }],
                 "Reader": ['group', {
                     'members': d({
-                        "init": ['method', {
-                            'data': null,
-                            'interface': ['reference', {
-                                'namespaces': a([]),
-                                'interface': "StreamConsumer"
-                            }],
-                        }],
+                        "init": method(null, ['reference', {
+                            'context': ['local', null],
+                            'namespaces': a([]),
+                            'interface': "StreamConsumer"
+                        }], true),
                         "onError": ['method', {
                             'data': nmespacedTypeReference("AnnotatedReadFileError"),
                             'interface': null,
@@ -238,7 +227,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }]
             },
             "getFile": {
-                'definition':  {
+                'definition': {
                     'function': "GetFile"
                 },
                 'type': ['reference', null]
