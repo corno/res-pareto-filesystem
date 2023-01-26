@@ -43,7 +43,6 @@ export function writeFileImp(
                 }])
             } else {
                 cb(['success',  null])
-
             }
         }
     )
