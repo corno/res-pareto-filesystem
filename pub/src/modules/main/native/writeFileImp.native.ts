@@ -8,7 +8,7 @@ import { joinPath } from "./joinPath.native"
 export function writeFileImp(
     path: mcommon.TPath,
     data: string,
-    cb: (v: api.TWriteFile_Result) => void
+    cb: (v: api.TWriteFile_$Result) => void
 ) {
     const joinedPath = joinPath(path)
 
