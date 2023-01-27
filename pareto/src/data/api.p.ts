@@ -194,8 +194,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "CreateWriteStream": {
                 'return type': ['nothing', null],
                 'data': typeReference("CreateWriteStreamData"),
-                'output interface': null,
-                'managed input interface': interfaceReference("WriteString")
+                'output interface': ['not set', null],
+                'managed input interface': ['set', interfaceReference("WriteString")],
             },
             "HandleError": procedure(typeReference("AnnotatedWriteFileError")),
         }),
