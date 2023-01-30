@@ -1,5 +1,5 @@
 
-import * as api from "../../main/api"
+import * as api from "../api"
 
 
 export function createFileError(

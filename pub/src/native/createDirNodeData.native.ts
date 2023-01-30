@@ -1,6 +1,6 @@
 import * as fs from "fs"
 
-import * as api from "../../main/api"
+import * as api from "../api"
 
 export function createDirNodeData(path: string, dirent: fs.Dirent): api.TDirNodeData {
     return {

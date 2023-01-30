@@ -1,4 +1,4 @@
-import * as api from "../../main/api"
+import * as api from "../api"
 import * as mcommon from "glo-pareto-common"
 
 import * as mfs from "fs"
