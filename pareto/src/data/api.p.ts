@@ -6,12 +6,12 @@ import {
     null_,
     nested,
     template,
-    dictionary, member, taggedUnion, types, _function, group, typeReference, interfaceReference, procedure, callback, method, boolean
-} from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+    dictionary, member, taggedUnion, types, group, typeReference, interfaceReference, method, boolean, func, data
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
 
@@ -183,17 +183,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }]
         }),
         'functions': d({
-            "MakeDirectory": _function(typeReference("Mkdir_Data"), typeReference("Mkdir_Result"), true),
-            "ReadDirectory": _function(typeReference("ReadDirectory_Data"), typeReference("ReadDirectory_Result"), true),
-            "Unlink": _function(typeReference("Unlink_Data"), typeReference("Unlink_Result"), true),
-            "GetFile": callback(typeReference("common", "Path"), interfaceReference("Reader")),
-            "CreateWriteStream": {
-                'return type': ['nothing', {}],
-                'data': typeReference("CreateWriteStreamData"),
-                'output interface': ['not set', {}],
-                'managed input interface': ['set', interfaceReference("WriteString")],
-            },
-            "HandleError": procedure(typeReference("AnnotatedWriteFileError")),
+            "MakeDirectory": func(typeReference("Mkdir_Data"), null, null, data(typeReference("Mkdir_Result"), true)),
+            "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
+            "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
+            "GetFile": func(typeReference("common", "Path"), null, interfaceReference("Reader"), null),
+            "CreateWriteStream": func(typeReference("CreateWriteStreamData"), interfaceReference("WriteString"), null, null),
+            "HandleError": func(typeReference("AnnotatedWriteFileError"), null, null, null),
         }),
     },
     'api': {
