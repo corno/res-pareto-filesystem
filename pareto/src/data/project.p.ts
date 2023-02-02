@@ -7,8 +7,6 @@ const d = pr.wrapRawDictionary
 import { $ as api } from "./api.p"
 
 export const $: mproject.TProject = {
-    'name': "res-pareto-filesystem",
-
     'author': "Corno",
     'description': "a pareto wrapper around the fs library of NodeJS",
     'license': "ISC",
