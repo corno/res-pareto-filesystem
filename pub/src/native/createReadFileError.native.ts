@@ -4,7 +4,7 @@ import * as api from "../api"
 
 export function createFileError(
     err: NodeJS.ErrnoException
-): api.TReadFileError {
+): api.T.ReadFileError {
 
     switch (err.code) {
         case 'ENOENT':

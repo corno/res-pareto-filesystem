@@ -7,7 +7,7 @@ import { mkdirImp } from "./mkdirImp.native"
 export function createContainingDirectories(
     path: string,
     onDone: () => void,
-    onError: ($: api.TWriteFileError) => void
+    onError: ($: api.T.WriteFileError) => void
 ) {
 
     mkdirImp(

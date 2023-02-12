@@ -6,9 +6,9 @@ import { joinPath } from "./joinPath.native"
 
 
 export function writeFileImp(
-    path: mcommon.TPath,
+    path: mcommon.T.Path,
     data: string,
-    cb: (v: api.TWriteFile_$Result) => void
+    cb: (v: api.T.WriteFile_$Result) => void
 ) {
     const joinedPath = joinPath(path)
 
@@ -24,7 +24,7 @@ export function writeFileImp(
                 const errCode = err.code
                 const errMessage = err.message
 
-                function createError(): api.TWriteFileError {
+                function createError(): api.T.WriteFileError {
 
                     switch (errCode) {
                         case 'ENOENT':

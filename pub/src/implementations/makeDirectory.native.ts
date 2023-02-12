@@ -20,7 +20,7 @@ export const $$: api.CmakeDirectory = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.TMkdirError {
+                        function createError(): api.T.MkdirError {
 
                             switch (errCode) {
                                 //what is the error code for exists????

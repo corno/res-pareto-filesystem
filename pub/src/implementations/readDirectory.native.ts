@@ -23,7 +23,7 @@ export const $$: api.CreadDirectory = ($) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
-                        function createError(): api.TReadDirError {
+                        function createError(): api.T.ReadDirError {
 
                             switch (errCode) {
                                 case 'ENOENT':
@@ -41,7 +41,7 @@ export const $$: api.CreadDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        const values: { [key: string]: api.TDirNodeData } = {}
+                        const values: { [key: string]: api.T.DirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)

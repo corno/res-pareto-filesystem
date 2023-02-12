@@ -17,7 +17,7 @@ export const $$: api.Cunlink = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.TUnlinkError {
+                        function createError(): api.T.UnlinkError {
 
                             switch (errCode) {
                                 case 'ENOENT':
