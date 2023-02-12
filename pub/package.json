@@ -2,7 +2,6 @@
   "author": "Corno",
   "license": "ISC",
   "description": "a pareto wrapper around the fs library of NodeJS",
-
   "dependencies": {
     "glo-pareto-common": "^0.12.0",
     "pareto-core-internals": "^0.11.1"
@@ -14,8 +13,12 @@
     "dist"
   ],
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "http://github.com/corno/res-pareto-filesystem.git"
   },
   "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "name": "res-pareto-filesystem",
+  "version": "0.38.0",
+  "content-fingerprint": "f1d34e439222818abf42b2116d032b3588fa0886"
 }
