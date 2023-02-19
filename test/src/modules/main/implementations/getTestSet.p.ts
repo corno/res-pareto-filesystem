@@ -1,6 +1,7 @@
 
 import * as ps from 'pareto-core-state'
 import * as pl from 'pareto-core-lib'
+import * as pv from 'pareto-core-dev'
 
 import * as mtest from "lib-pareto-test"
 
@@ -21,7 +22,7 @@ export const $$: api.CgetTestSet = ($) => {
             case 'success':
                 pl.cc($[1], ($) => {
                     $.forEach(() => false, ($, key) => {
-                        pl.logDebugMessage($.path)
+                        pv.logDebugMessage($.path)
                     })
                 })
                 break
