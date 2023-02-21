@@ -8,7 +8,6 @@ import { mkdirImp } from "../native/mkdirImp.native"
 export const $$: api.CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
-        true,
         (cb) => {
             mkdirImp(
                 joinedPath,

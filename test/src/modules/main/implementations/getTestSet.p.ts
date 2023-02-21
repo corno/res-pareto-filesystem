@@ -12,7 +12,7 @@ import * as pub from "../../../../../pub"
 
 export const $$: api.CgetTestSet = ($) => {
 
-    pub.$a.readDirectory({ path: ["..", "..", "pub", "src"] })._execute(($) => {
+    pub.$a.readDirectory({ path: ["..", "..", "pub", "src"] }).__execute(($) => {
         switch ($[0]) {
             case 'error':
                 pl.cc($[1], ($) => {
@@ -21,7 +21,7 @@ export const $$: api.CgetTestSet = ($) => {
                 break
             case 'success':
                 pl.cc($[1], ($) => {
-                    $.forEach(() => false, ($, key) => {
+                    $.__forEach(() => false, ($, key) => {
                         pv.logDebugMessage($.path)
                     })
                 })

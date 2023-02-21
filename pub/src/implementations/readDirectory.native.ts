@@ -12,7 +12,6 @@ import { wrapRawDictionary } from "../native/wrapRawDictionary.native"
 export const $$: api.CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
-        true,
         (cb) => {
             readdir(
                 joinedPath,

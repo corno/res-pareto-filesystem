@@ -7,7 +7,6 @@ import { unlinkImp } from "../native/unlinkImp.native"
 
 export const $$: api.Cunlink = ($) => {
     return pi.wrapAsyncValueImp(
-        true,
         (cb) => {
             const joinedPath = joinPath($.path)
             unlinkImp(
@@ -35,8 +34,6 @@ export const $$: api.Cunlink = ($) => {
                     } else {
                         cb(['success',  null])
                     }
-
-
                 }
             )
         }
