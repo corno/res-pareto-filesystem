@@ -1,12 +1,14 @@
 
-import * as mapi from "../api"
+
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 import { createFileError } from "../native/createReadFileError.native"
 
-export const $$: mapi.CgetFile = ($, $i) => {
+import { CgetFile } from "../api"
+
+export const $$:CgetFile = ($, $i) => {
     const joinedPath = joinPath($)
 
     nfs.readFile(

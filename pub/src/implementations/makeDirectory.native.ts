@@ -1,12 +1,14 @@
 import * as pi from 'pareto-core-internals'
 
-import * as mapi from "../api"
+import * as gapi from "../api"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-export const $$: mapi.CmakeDirectory = ($) => {
+import { CmakeDirectory } from "../api"
+
+export const $$:CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {
@@ -20,7 +22,7 @@ export const $$: mapi.CmakeDirectory = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): mapi.T.MkdirError {
+                        function createError(): gapi.T.MkdirError {
 
                             switch (errCode) {
                                 //what is the error code for exists????

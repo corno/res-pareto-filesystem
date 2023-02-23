@@ -1,14 +1,16 @@
 
 import * as pi from 'pareto-core-internals'
 
-import * as mapi from "../api"
+import * as gapi from "../api"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 import { createDirNodeData } from "../native/createDirNodeData.native"
 
-export const $$: mapi.CreadDirectory = ($) => {
+import { CreadDirectory } from "../api"
+
+export const $$:CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {
@@ -21,7 +23,7 @@ export const $$: mapi.CreadDirectory = ($) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
-                        function createError(): mapi.T.ReadDirError {
+                        function createError(): gapi.T.ReadDirError {
 
                             switch (errCode) {
                                 case 'ENOENT':
@@ -39,7 +41,7 @@ export const $$: mapi.CreadDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        const values: { [key: string]: mapi.T.DirNodeData } = {}
+                        const values: { [key: string]: gapi.T.DirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)
