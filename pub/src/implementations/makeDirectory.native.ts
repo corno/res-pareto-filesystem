@@ -1,11 +1,11 @@
-import * as pi from "pareto-core-internals"
+import * as pi from 'pareto-core-internals'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
 import { joinPath } from "../native/joinPath.native"
 import { mkdirImp } from "../native/mkdirImp.native"
 
-export const $$: api.CmakeDirectory = ($) => {
+export const $$: mapi.CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {
@@ -19,7 +19,7 @@ export const $$: api.CmakeDirectory = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): api.T.MkdirError {
+                        function createError(): mapi.T.MkdirError {
 
                             switch (errCode) {
                                 //what is the error code for exists????

@@ -2,17 +2,16 @@
 import * as ps from 'pareto-core-state'
 import * as pl from 'pareto-core-lib'
 import * as pv from 'pareto-core-dev'
+import * as pa from 'pareto-core-async'
 
 import * as mtest from "lib-pareto-test"
 
-import * as api from "../api"
+import * as mapi from "../api"
+import * as mpub from "../../../../../pub"
 
+export const $$: mapi.CgetTestSet = ($) => {
 
-import * as pub from "../../../../../pub"
-
-export const $$: api.CgetTestSet = ($) => {
-
-    pub.$a.readDirectory({ path: ["..", "..", "pub", "src"] }).__execute(($) => {
+    mpub.$a.readDirectory({ path: ['..', "..", "pub", "src"] }).__execute(($) => {
         switch ($[0]) {
             case 'error':
                 pl.cc($[1], ($) => {
@@ -42,7 +41,7 @@ export const $$: api.CgetTestSet = ($) => {
         })
     }
 
-    return pl.asyncValue({
+    return pa.asyncValue({
         elements: builder.getDictionary()
     })
 }
