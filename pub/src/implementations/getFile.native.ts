@@ -1,15 +1,15 @@
-import * as pi from 'pareto-core-internals'
 
-import * as api from "../api"
+import * as mapi from "../api"
+
+import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 import { createFileError } from "../native/createReadFileError.native"
-import { readFileImp } from "../native/readFileImp.native"
 
-export const $$: api.CgetFile = ($, $i) => {
+export const $$: mapi.CgetFile = ($, $i) => {
     const joinedPath = joinPath($)
 
-    readFileImp(
+    nfs.readFile(
         joinedPath,
         {
             encoding: "utf-8",

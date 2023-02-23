@@ -2,7 +2,7 @@
 import * as api from "../api"
 
 import * as pth from "path"
-import { mkdirImp } from "./mkdirImp.native"
+import * as fs from "fs"
 
 export function createContainingDirectories(
     path: string,
@@ -10,7 +10,7 @@ export function createContainingDirectories(
     onError: ($: api.T.WriteFileError) => void
 ) {
 
-    mkdirImp(
+    fs.mkdir(
         pth.dirname(path),
         { recursive: true },
         (err) => {

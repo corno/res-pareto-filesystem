@@ -3,7 +3,6 @@ import * as mapi from "../api"
 import { writeFileImp } from "../native/writeFileImp.native"
 import { createContainingDirectories } from "../native/createContainingDirectories.native"
 import { joinPath } from "../native/joinPath.native"
-import { concat } from "../native/concat.native"
 
 export const $$: mapi.CcreateWriteStream = ($d) => {
     return ($, $c) => {
@@ -11,7 +10,7 @@ export const $$: mapi.CcreateWriteStream = ($d) => {
         const joinedPath = joinPath($.path)
         let tmp = ""
         $c(($) => {
-            tmp = concat(tmp, $)
+            tmp += $
         })
 
         if ($.createContainingDirectories) {

@@ -2,15 +2,16 @@ import * as pi from 'pareto-core-internals'
 
 import * as api from "../api"
 
+import * as nfs from "fs"
+
 import { joinPath } from "../native/joinPath.native"
-import { unlinkImp } from "../native/unlinkImp.native"
 
 export const $$: api.Cunlink = ($) => {
     return pi.wrapAsyncValueImp(
         (cb) => {
             const joinedPath = joinPath($.path)
-            unlinkImp(
-                joinPath($.path),
+            nfs.unlink(
+                joinedPath,
                 (err) => {
                     if (err !== null) {
                         const errCode = err.code

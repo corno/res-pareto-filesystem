@@ -2,14 +2,15 @@ import * as pi from 'pareto-core-internals'
 
 import * as mapi from "../api"
 
+import * as nfs from "fs"
+
 import { joinPath } from "../native/joinPath.native"
-import { mkdirImp } from "../native/mkdirImp.native"
 
 export const $$: mapi.CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {
-            mkdirImp(
+            nfs.mkdir(
                 joinedPath,
                 {
                     recursive: $.createContainingDirectories,

@@ -1,19 +1,18 @@
 
-//import * as fs from "fs"
 import * as pi from 'pareto-core-internals'
 
 import * as mapi from "../api"
 
+import * as nfs from "fs"
+
 import { joinPath } from "../native/joinPath.native"
 import { createDirNodeData } from "../native/createDirNodeData.native"
-import { readdir } from "../native/readdir.native"
-import { wrapRawDictionary } from "../native/wrapRawDictionary.native"
 
 export const $$: mapi.CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {
-            readdir(
+            nfs.readdir(
                 joinedPath,
                 {
                     withFileTypes: true,
@@ -45,7 +44,7 @@ export const $$: mapi.CreadDirectory = ($) => {
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)
                         })
-                        cb(['success',  wrapRawDictionary(values)])
+                        cb(['success',  pi.wrapRawDictionary(values)])
                     }
                 }
             )
