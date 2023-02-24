@@ -2,7 +2,7 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as mcommon from "glo-pareto-common"
+import * as gcommon from "glo-pareto-common"
 
 export type IReader = {
     'init': ($c: ($i: IStreamConsumer) => void) => void
@@ -10,15 +10,15 @@ export type IReader = {
 }
 
 export type IStreamConsumer = {
-    'onData': ($: mcommon.T.String, ) => void
+    'onData': ($: gcommon.T.String, ) => void
     'onEnd': () => void
 }
 
-export type IWriteString = ($: mcommon.T.String, ) => void
+export type IWriteString = ($: gcommon.T.String, ) => void
 
 export type FCreateWriteStream = ($: T.CreateWriteStreamData, $c: ($i: IWriteString) => void,) => void
 
-export type FGetFile = ($: mcommon.T.Path, $i: IReader,) => void
+export type FGetFile = ($: gcommon.T.Path, $i: IReader,) => void
 
 export type FHandleError = ($: T.AnnotatedWriteFileError,) => void
 

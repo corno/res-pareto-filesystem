@@ -1,19 +1,19 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
 
 export type CcreateWriteStream = ($d: {
-    readonly 'onError': glo.FHandleError
-}) => glo.FCreateWriteStream
+    readonly 'onError': gglo.FHandleError
+}) => gglo.FCreateWriteStream
 
-export type CgetFile = glo.FGetFile
+export type CgetFile = gglo.FGetFile
 
-export type CmakeDirectory = glo.FMakeDirectory
+export type CmakeDirectory = gglo.FMakeDirectory
 
-export type CreadDirectory = glo.FReadDirectory
+export type CreadDirectory = gglo.FReadDirectory
 
-export type Cunlink = glo.FUnlink
+export type Cunlink = gglo.FUnlink
 
 export type API = {
     createWriteStream: CcreateWriteStream
