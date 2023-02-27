@@ -18,12 +18,13 @@ echo "...building from scratch" && \
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
 
-pushd "$rootDir/pub" > /dev/null && \
 
 echo "...setting dynamic package data" && \
 "$scriptDir/setDynamicPackageData.sh" && \
 
 echo "...determining scope of change" && \
+
+pushd "$rootDir/pub" > /dev/null && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
@@ -43,4 +44,5 @@ else
     else
         "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
-fi
+fi && \
+popd > /dev/null

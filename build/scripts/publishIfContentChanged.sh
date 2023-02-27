@@ -14,6 +14,7 @@ name=`basename $root`
 
 popd && \
 
+#working dir doesn't matter for 'view'
 remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
 if [ $localFingerprint == $remoteFingerprint ]
 then
