@@ -5,7 +5,7 @@ import { $$ as imakeDirectory } from "./implementations/makeDirectory.native"
 import { $$ as ireadDirectory } from "./implementations/readDirectory.native"
 import { $$ as iunlink } from "./implementations/unlink.native"
 
-export const $a: API = {
+export const $r: API = {
     'createWriteStream': icreateWriteStream,
     'getFile': igetFile,
     'makeDirectory': imakeDirectory,

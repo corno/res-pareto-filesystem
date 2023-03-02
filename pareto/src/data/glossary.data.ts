@@ -32,13 +32,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'parameters': d({}),
     'types': d({
-        "AnnotatedError": parametrizedType({ "Error": {} }, group({
+        "AnnotatedError": parametrizedType({ "Error": null }, group({
             "path": member(reference("common", "String")),
             "error": member(typeParameter("Error")),
         })),
         "Result": parametrizedType({
-            "Error": {},
-            "Success": {},
+            "Error": null,
+            "Success": null,
         }, taggedUnion({
             "error": typeParameter("Error"),
             "success": typeParameter("Success"),
@@ -174,7 +174,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Reader": ['group', {
             'members': d({
                 "init": method(null, ['reference', {
-                    'context': ['local', {}],
+                    'context': ['local', null],
                     'interface': "StreamConsumer"
                 }], true),
                 "onError": method(typeReference("AnnotatedReadFileError")),

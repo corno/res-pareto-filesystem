@@ -147,7 +147,7 @@ export namespace T {
     
     export namespace ReadFile_$Result {}
     
-    export type ReadFile_$Result = {}
+    export type ReadFile_$Result = null
     
     export namespace ReadFileError {
         

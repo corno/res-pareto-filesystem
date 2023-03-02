@@ -12,7 +12,7 @@ import { CgetTestSet } from "../definition/api.generated"
 
 export const $$:CgetTestSet = ($) => {
 
-    gpub.$a.readDirectory({ path: ['..', "..", "pub", "src"] }).__execute(($) => {
+    gpub.$r.readDirectory({ path: ['..', "..", "pub", "src"] }).__execute(($) => {
         switch ($[0]) {
             case 'error':
                 pl.cc($[1], ($) => {
