@@ -1,10 +1,10 @@
 
-import * as api from "../api"
+import * as gthis from "../definition/glossary"
 
 
 export function createFileError(
     err: NodeJS.ErrnoException
-): api.T.ReadFileError {
+): gthis.T.ReadFileError {
 
     switch (err.code) {
         case 'ENOENT':

@@ -1,12 +1,12 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gapi from "../api"
+import * as gapi from "../definition/glossary"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { CmakeDirectory } from "../api"
+import { CmakeDirectory } from "../definition/api.generated"
 
 export const $$:CmakeDirectory = ($) => {
     const joinedPath = joinPath($.path)

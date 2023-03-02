@@ -1,4 +1,4 @@
-import { API } from "./api"
+import { API } from "./definition/api.generated"
 import { $$ as icreateWriteStream } from "./implementations/createWriteStream.native"
 import { $$ as igetFile } from "./implementations/getFile.native"
 import { $$ as imakeDirectory } from "./implementations/makeDirectory.native"

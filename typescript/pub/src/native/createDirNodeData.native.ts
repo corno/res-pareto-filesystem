@@ -1,8 +1,8 @@
 import * as fs from "fs"
 
-import * as api from "../api"
+import * as gthis from "../definition/glossary"
 
-export function createDirNodeData(path: string, dirent: fs.Dirent): api.T.DirNodeData {
+export function createDirNodeData(path: string, dirent: fs.Dirent): gthis.T.DirNodeData {
     return {
         path: path,
         type: dirent.isDirectory()

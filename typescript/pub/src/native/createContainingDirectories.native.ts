@@ -1,5 +1,5 @@
 
-import * as api from "../api"
+import * as gthis from "../definition/glossary"
 
 import * as pth from "path"
 import * as fs from "fs"
@@ -7,7 +7,7 @@ import * as fs from "fs"
 export function createContainingDirectories(
     path: string,
     onDone: () => void,
-    onError: ($: api.T.WriteFileError) => void
+    onError: ($: gthis.T.WriteFileError) => void
 ) {
 
     fs.mkdir(

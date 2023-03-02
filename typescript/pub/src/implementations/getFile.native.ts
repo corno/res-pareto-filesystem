@@ -6,7 +6,7 @@ import * as nfs from "fs"
 import { joinPath } from "../native/joinPath.native"
 import { createFileError } from "../native/createReadFileError.native"
 
-import { CgetFile } from "../api"
+import { CgetFile } from "../definition/api.generated"
 
 export const $$:CgetFile = ($, $i) => {
     const joinedPath = joinPath($)

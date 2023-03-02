@@ -1,14 +1,14 @@
 
 import * as pi from 'pareto-core-internals'
 
-import * as gapi from "../api"
+import * as gapi from "../definition/glossary"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 import { createDirNodeData } from "../native/createDirNodeData.native"
 
-import { CreadDirectory } from "../api"
+import { CreadDirectory } from "../definition/api.generated"
 
 export const $$:CreadDirectory = ($) => {
     const joinedPath = joinPath($.path)

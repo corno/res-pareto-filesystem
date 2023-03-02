@@ -1,18 +1,19 @@
-import * as api from "../api"
+import * as gthis from "../definition/glossary"
 import * as gcommon from "glo-pareto-common"
 
-import * as gfs from "fs"
+import * as nfs from "fs"
+
 import { joinPath } from "./joinPath.native"
 
 
 export function writeFileImp(
     path: gcommon.T.Path,
     data: string,
-    cb: (v: api.T.WriteFile_$Result) => void
+    cb: (v: gthis.T.WriteFile_$Result) => void
 ) {
     const joinedPath = joinPath(path)
 
-    gfs.writeFile(
+    nfs.writeFile(
         joinedPath,
         data,
         {
@@ -24,7 +25,7 @@ export function writeFileImp(
                 const errCode = err.code
                 const errMessage = err.message
 
-                function createError(): api.T.WriteFileError {
+                function createError(): gthis.T.WriteFileError {
 
                     switch (errCode) {
                         case 'ENOENT':
