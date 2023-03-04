@@ -8,24 +8,12 @@ export namespace I {}
 
 export namespace B {
     
-    export type Reader = {
-        'init': ($c: ($b: B.StreamConsumer) => void) => void
-        'onError': ($: T.AnnotatedReadFileError, ) => void
-    }
-    
-    export type StreamConsumer = {
-        'onData': ($: g_common.T.String, ) => void
-        'onEnd': () => void
-    }
-    
-    export type WriteString = ($: g_common.T.String, ) => void
+    export type StringBuilder = ($: g_common.T.String, ) => void
 }
 
 export namespace F {
     
-    export type CreateWriteStream = ($: T.CreateWriteStreamData, $c: ($b: B.WriteString) => void,) => void
-    
-    export type GetFile = ($: g_common.T.Path, $b: B.Reader,) => void
+    export type CreateWriter = ($: T.CreateWriterData, $c: ($b: B.StringBuilder) => void,) => void
     
     export type HandleWriteFileError = ($: T.AnnotatedWriteFileError,) => void
     

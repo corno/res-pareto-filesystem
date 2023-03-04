@@ -55,7 +55,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "AnnotatedWriteFileError": type(parametrizedReference("AnnotatedError", {
             "Error": typeReference("WriteFileError"),
         })),
-        "CreateWriteStreamData": type(group({
+        "CreateWriterData": type(group({
             "path": member(reference("common", "Path")),
             "createContainingDirectories": member(boolean()),
         })),
@@ -161,28 +161,22 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
     }),
     'builders': d({
-        "WriteString": builderMethod(typeReference("common", "String")),
-        "StreamConsumer": ['group', {
-            'members': d({
-                "onData": builderMethod(typeReference("common", "String")),
-                "onEnd": builderMethod(null),
-            }),
-        }],
-        "Reader": ['group', {
-            'members': d({
-                "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
-                "onError": builderMethod(typeReference("AnnotatedReadFileError")),
-            })
-        }]
+        "StringBuilder": builderMethod(typeReference("common", "String")),
     }),
     'interfaces': d({
+        // "Reader": ['group', {
+        //     'members': d({
+        //         "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
+        //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
+        //     })
+        // }]
     }),
     'functions': d({
         "MakeDirectory": func(typeReference("Mkdir_Data"), null, null, data(typeReference("Mkdir_Result"), true)),
         "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
         "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
-        "GetFile": func(typeReference("common", "Path"), null, builderReference("Reader"), null),
-        "CreateWriteStream": func(typeReference("CreateWriteStreamData"), builderReference("WriteString"), null, null),
+        //"OpenFIleStream": func(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
+        "CreateWriter": func(typeReference("CreateWriterData"), builderReference("StringBuilder"), null, null),
 
         //these should be defined somewhere but is this the place
         // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),

@@ -26,14 +26,14 @@ export namespace T {
     
     export type AnnotatedWriteFileError = T.AnnotatedError<T.WriteFileError>
     
-    export namespace CreateWriteStreamData {
+    export namespace CreateWriterData {
         
         export type createContainingDirectories = boolean
         
         export type path = g_common.T.Path
     }
     
-    export type CreateWriteStreamData = {
+    export type CreateWriterData = {
         readonly 'createContainingDirectories': boolean
         readonly 'path': g_common.T.Path
     }

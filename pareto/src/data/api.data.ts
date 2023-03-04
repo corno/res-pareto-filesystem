@@ -7,10 +7,10 @@ const d = pd.d
 
 export const $: gapi.T.API<pd.SourceLocation> = {
     'algorithms': d({
-        "createWriteStream": algorithm(functionReference("this", {}, "CreateWriteStream"), constructor(null, {
+        "createWriter": algorithm(functionReference("this", {}, "CreateWriter"), constructor(null, {
             "onError": functionReference("this", {}, "HandleWriteFileError"),
         })),
-        "getFile": algorithm(functionReference("this", {}, "GetFile")),
+        //"openFileStream": algorithm(functionReference("this", {}, "GetFile")),
         "makeDirectory": algorithm(functionReference("this", {}, "MakeDirectory")),
         "readDirectory": algorithm(functionReference("this", {}, "ReadDirectory")),
         "unlink": algorithm(functionReference("this", {}, "Unlink")),
