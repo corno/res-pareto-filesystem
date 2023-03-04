@@ -161,7 +161,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
     }),
     'builders': d({
-        "StringBuilder": builderMethod(typeReference("common", "String")),
     }),
     'interfaces': d({
         // "Reader": ['group', {
@@ -176,7 +175,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
         "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
         //"OpenFIleStream": func(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
-        "CreateWriter": func(typeReference("CreateWriterData"), builderReference("StringBuilder"), null, null),
+        "CreateWriter": func(typeReference("CreateWriterData"), builderReference("common", "StringBuilder"), null, null),
 
         //these should be defined somewhere but is this the place
         // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),

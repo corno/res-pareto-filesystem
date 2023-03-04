@@ -6,14 +6,11 @@ import * as g_common from "glo-pareto-common"
 
 export namespace I {}
 
-export namespace B {
-    
-    export type StringBuilder = ($: g_common.T.String, ) => void
-}
+export namespace B {}
 
 export namespace F {
     
-    export type CreateWriter = ($: T.CreateWriterData, $c: ($b: B.StringBuilder) => void,) => void
+    export type CreateWriter = ($: T.CreateWriterData, $c: ($b: g_common.B.StringBuilder) => void,) => void
     
     export type HandleWriteFileError = ($: T.AnnotatedWriteFileError,) => void
     
