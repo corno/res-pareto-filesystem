@@ -1,23 +1,23 @@
 import * as pt from 'pareto-core-types'
 
-import * as gthis from "./glossary"
+import * as g_this from "./glossary"
 
-export type CcreateWriteStream = ($d: {
-    readonly 'onError': gthis.FHandleWriteFileError
-}) => gthis.FCreateWriteStream
+export type createWriteStream = ($d: {
+    readonly 'onError': g_this.F.HandleWriteFileError
+}) => g_this.F.CreateWriteStream
 
-export type CgetFile = gthis.FGetFile
+export type getFile = g_this.F.GetFile
 
-export type CmakeDirectory = gthis.FMakeDirectory
+export type makeDirectory = g_this.F.MakeDirectory
 
-export type CreadDirectory = gthis.FReadDirectory
+export type readDirectory = g_this.F.ReadDirectory
 
-export type Cunlink = gthis.FUnlink
+export type unlink = g_this.F.Unlink
 
 export type API = {
-    createWriteStream: CcreateWriteStream
-    getFile: CgetFile
-    makeDirectory: CmakeDirectory
-    readDirectory: CreadDirectory
-    unlink: Cunlink
+    createWriteStream: createWriteStream
+    getFile: getFile
+    makeDirectory: makeDirectory
+    readDirectory: readDirectory
+    unlink: unlink
 }

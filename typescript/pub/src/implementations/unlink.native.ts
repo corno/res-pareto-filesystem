@@ -6,9 +6,9 @@ import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { Cunlink } from "../definition/api.generated"
+import { unlink } from "../definition/api.generated"
 
-export const $$: Cunlink = ($) => {
+export const $$: unlink = ($) => {
     return pi.wrapAsyncValueImp(
         (cb) => {
             const joinedPath = joinPath($.path)

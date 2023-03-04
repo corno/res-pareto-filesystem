@@ -41,10 +41,11 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             'dependencies': d({
             }),
             'glossary': {
-                'functions': d({}),
                 'parameters': d({}),
                 'types': d({}),
+                'builders': d({}),
                 'interfaces': d({}),
+                'functions': d({}),
             },
             'imports': d({}),
         }

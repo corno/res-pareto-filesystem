@@ -4,9 +4,9 @@ import { writeFileImp } from "../native/writeFileImp.native"
 import { createContainingDirectories } from "../native/createContainingDirectories.native"
 import { joinPath } from "../native/joinPath.native"
 
-import { CcreateWriteStream } from "../definition/api.generated"
+import { createWriteStream } from "../definition/api.generated"
 
-export const $$:CcreateWriteStream = ($d) => {
+export const $$: createWriteStream = ($d) => {
     return ($, $c) => {
         //FIX use fs.createWriteStream
         const joinedPath = joinPath($.path)

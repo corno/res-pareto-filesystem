@@ -6,9 +6,9 @@ import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { CmakeDirectory } from "../definition/api.generated"
+import { makeDirectory } from "../definition/api.generated"
 
-export const $$:CmakeDirectory = ($) => {
+export const $$: makeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {

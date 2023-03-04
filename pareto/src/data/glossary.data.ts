@@ -13,8 +13,8 @@ import {
     optional,
     reference,
     number,
-    method,
-    interfaceReference,
+    builderMethod,
+    builderReference,
     glossaryParameter,
     parametrizedReference,
     parametrizedType,
@@ -160,30 +160,29 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             }),
         })),
     }),
-    'interfaces': d({
-        "WriteString": method(typeReference("common", "String")),
+    'builders': d({
+        "WriteString": builderMethod(typeReference("common", "String")),
         "StreamConsumer": ['group', {
             'members': d({
-                "onData": method(typeReference("common", "String")),
-                "onEnd": method(null),
+                "onData": builderMethod(typeReference("common", "String")),
+                "onEnd": builderMethod(null),
             }),
         }],
         "Reader": ['group', {
             'members': d({
-                "init": method(null, ['reference', {
-                    'context': ['local', null],
-                    'interface': "StreamConsumer"
-                }], true),
-                "onError": method(typeReference("AnnotatedReadFileError")),
+                "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
+                "onError": builderMethod(typeReference("AnnotatedReadFileError")),
             })
         }]
+    }),
+    'interfaces': d({
     }),
     'functions': d({
         "MakeDirectory": func(typeReference("Mkdir_Data"), null, null, data(typeReference("Mkdir_Result"), true)),
         "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
         "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
-        "GetFile": func(typeReference("common", "Path"), null, interfaceReference("Reader"), null),
-        "CreateWriteStream": func(typeReference("CreateWriteStreamData"), interfaceReference("WriteString"), null, null),
+        "GetFile": func(typeReference("common", "Path"), null, builderReference("Reader"), null),
+        "CreateWriteStream": func(typeReference("CreateWriteStreamData"), builderReference("WriteString"), null, null),
 
         //these should be defined somewhere but is this the place
         // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),
@@ -193,8 +192,5 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
 
         //shouldn't this be an interface method on CreateWriteStream?
         "HandleWriteFileError": func(typeReference("AnnotatedWriteFileError"), null, null, null),
-
-
-
     }),
 }

@@ -1,19 +1,19 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
+import * as g_common from "glo-pareto-common"
 
 export namespace T {
     
     export namespace AnnotatedError {
         
-        export type error<AError> = AError
+        export type error<TError> = TError
         
-        export type path<AError> = gcommon.T.String
+        export type path<TError> = g_common.T.String
     }
     
-    export type AnnotatedError<AError> = {
-        readonly 'error': AError
-        readonly 'path': gcommon.T.String
+    export type AnnotatedError<TError> = {
+        readonly 'error': TError
+        readonly 'path': g_common.T.String
     }
     
     export type AnnotatedMkdirError = T.AnnotatedError<T.MkdirError>
@@ -30,12 +30,12 @@ export namespace T {
         
         export type createContainingDirectories = boolean
         
-        export type path = gcommon.T.Path
+        export type path = g_common.T.Path
     }
     
     export type CreateWriteStreamData = {
         readonly 'createContainingDirectories': boolean
-        readonly 'path': gcommon.T.Path
+        readonly 'path': g_common.T.Path
     }
     
     export namespace DirNodeData {
@@ -69,15 +69,15 @@ export namespace T {
         
         export type createContainingDirectories = boolean
         
-        export type path = gcommon.T.Path
+        export type path = g_common.T.Path
     }
     
     export type Mkdir_$Data = {
         readonly 'createContainingDirectories': boolean
-        readonly 'path': gcommon.T.Path
+        readonly 'path': g_common.T.Path
     }
     
-    export type Mkdir_$Result = T.Result<T.AnnotatedMkdirError, gcommon.T.Null>
+    export type Mkdir_$Result = T.Result<T.AnnotatedMkdirError, g_common.T.Null>
     
     export namespace MkdirError {
         
@@ -104,11 +104,11 @@ export namespace T {
     
     export namespace ReadDirectory_$Data {
         
-        export type path = gcommon.T.Path
+        export type path = g_common.T.Path
     }
     
     export type ReadDirectory_$Data = {
-        readonly 'path': gcommon.T.Path
+        readonly 'path': g_common.T.Path
     }
     
     export type ReadDirectory_$Result = T.Result<T.AnnotatedReadDirError, T.ReadDirectory_$Success>
@@ -143,7 +143,7 @@ export namespace T {
             readonly 'message': string
         }]
     
-    export type ReadFile_$Data = T.Result<T.AnnotatedReadFileError, gcommon.T.String>
+    export type ReadFile_$Data = T.Result<T.AnnotatedReadFileError, g_common.T.String>
     
     export namespace ReadFile_$Result {}
     
@@ -174,14 +174,14 @@ export namespace T {
     
     export namespace Result {
         
-        export type error<AError, ASuccess> = AError
+        export type error<TError, TSuccess> = TError
         
-        export type success<AError, ASuccess> = ASuccess
+        export type success<TError, TSuccess> = TSuccess
     }
     
-    export type Result<AError, ASuccess> = 
-        | ['error', AError]
-        | ['success', ASuccess]
+    export type Result<TError, TSuccess> = 
+        | ['error', TError]
+        | ['success', TSuccess]
     
     export namespace RmdirError {
         
@@ -208,14 +208,14 @@ export namespace T {
     
     export namespace Unlink_$Data {
         
-        export type path = gcommon.T.Path
+        export type path = g_common.T.Path
     }
     
     export type Unlink_$Data = {
-        readonly 'path': gcommon.T.Path
+        readonly 'path': g_common.T.Path
     }
     
-    export type Unlink_$Result = T.Result<T.AnnotatedUnlinkError, gcommon.T.Null>
+    export type Unlink_$Result = T.Result<T.AnnotatedUnlinkError, g_common.T.Null>
     
     export namespace UnlinkError {
         
@@ -240,7 +240,7 @@ export namespace T {
             readonly 'message': string
         }]
     
-    export type WriteFile_$Result = T.Result<T.AnnotatedWriteFileError, gcommon.T.Null>
+    export type WriteFile_$Result = T.Result<T.AnnotatedWriteFileError, g_common.T.Null>
     
     export namespace WriteFileData {
         
@@ -248,13 +248,13 @@ export namespace T {
         
         export type data = string
         
-        export type path = gcommon.T.Path
+        export type path = g_common.T.Path
     }
     
     export type WriteFileData = {
         readonly 'createContainingDirectories': boolean
         readonly 'data': string
-        readonly 'path': gcommon.T.Path
+        readonly 'path': g_common.T.Path
     }
     
     export namespace WriteFileError {
