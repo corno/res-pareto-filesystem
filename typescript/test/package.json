@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "lib-pareto-test": "^0.32.0",
-    "pareto-core-async": "^0.7.0",
-    "pareto-core-data": "^0.2.0",
-    "pareto-core-dev": "^0.2.0",
-    "pareto-core-exe": "^0.17.0",
-    "pareto-core-lib": "^0.21.0",
-    "pareto-core-map": "^0.2.1",
-    "pareto-core-state": "^0.15.0",
-    "res-pareto-main": "^0.16.0"
+    "lib-pareto-test": "^0.0.0",
+    "pareto-core-exe": "^0.0.0",
+    "pareto-core-map": "^0.0.0",
+    "pareto-core-async": "^0.0.0",
+    "pareto-core-dev": "^0.0.0",
+    "pareto-core-lib": "^0.0.0",
+    "pareto-core-data": "^0.0.0",
+    "pareto-core-state": "^0.0.0",
+    "res-pareto-main": "^0.0.0"
   }
 }
