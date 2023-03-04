@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as gthis from "./glossary"
 
 export type CcreateWriteStream = ($d: {
-    readonly 'onError': gthis.FHandleError
+    readonly 'onError': gthis.FHandleWriteFileError
 }) => gthis.FCreateWriteStream
 
 export type CgetFile = gthis.FGetFile

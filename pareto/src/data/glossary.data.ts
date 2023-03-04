@@ -27,9 +27,6 @@ import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossa
 const d = pd.d
 
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
-    'imports': d({
-        "common": "glo-pareto-common"
-    }),
     'parameters': d({}),
     'types': d({
         "AnnotatedError": parametrizedType({ "Error": null }, group({
@@ -187,6 +184,17 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
         "GetFile": func(typeReference("common", "Path"), null, interfaceReference("Reader"), null),
         "CreateWriteStream": func(typeReference("CreateWriteStreamData"), interfaceReference("WriteString"), null, null),
-        "HandleError": func(typeReference("AnnotatedWriteFileError"), null, null, null),
+
+        //these should be defined somewhere but is this the place
+        // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),
+        // "HandleReadFileError": func(typeReference("AnnotatedReadFileError"), null, null, null),
+        // "HandleMkdirError": func(typeReference("AnnotatedMkdirError"), null, null, null),
+        // "HandleUnlinkError": func(typeReference("AnnotatedUnlinkError"), null, null, null),
+
+        //shouldn't this be an interface method on CreateWriteStream?
+        "HandleWriteFileError": func(typeReference("AnnotatedWriteFileError"), null, null, null),
+
+
+
     }),
 }

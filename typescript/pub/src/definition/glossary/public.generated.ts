@@ -20,7 +20,7 @@ export type FCreateWriteStream = ($: T.CreateWriteStreamData, $c: ($i: IWriteStr
 
 export type FGetFile = ($: gcommon.T.Path, $i: IReader,) => void
 
-export type FHandleError = ($: T.AnnotatedWriteFileError,) => void
+export type FHandleWriteFileError = ($: T.AnnotatedWriteFileError,) => void
 
 export type FMakeDirectory = ($: T.Mkdir_$Data,) => pt.AsyncValue<T.Mkdir_$Result>
 
