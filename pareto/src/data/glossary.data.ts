@@ -65,9 +65,9 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         //         "no entity": null_(),
         //         "is directory": null_(),
         //         "unknown": type(group({
-        //             "message": member(str())
+        //             "message": member(str()),
         //         })),
-        //     }))
+        //     })),
         // }),
         "DirNodeData": type(group({
             "path": member(string()),
@@ -81,7 +81,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "no entity": null_(),
             "exists": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
         "Mkdir_Data": type(group({
@@ -104,7 +104,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "no entity": null_(),
             "is not directory": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
         "ReadFile_Data": type(parametrizedReference("Result", {
@@ -117,21 +117,21 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "no entity": null_(),
             "is directory": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
         "RmdirError": type( taggedUnion({
             "no entity": null_(),
             "not empty": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
         "UnlinkError": type( taggedUnion({
             "no entity": null_(),
             "is directory": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
         "Unlink_Data": type( group({
@@ -156,7 +156,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "no entity": null_(),
             "is directory": null_(),
             "unknown": group({
-                "message": member(string())
+                "message": member(string()),
             }),
         })),
     }),
@@ -167,7 +167,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         //     'members': d({
         //         "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
         //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
-        //     })
+        //     }),
         // }]
     }),
     'functions': d({

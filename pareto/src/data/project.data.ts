@@ -22,7 +22,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             'glossary': {
                 'root': glossary,
                 'imports': d({
-                    "common": external("glo-pareto-common")
+                    "common": external("glo-pareto-common"),
                 }),
             },
             'api': {

@@ -14,5 +14,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         "makeDirectory": algorithm(functionReference("this", {}, "MakeDirectory")),
         "readDirectory": algorithm(functionReference("this", {}, "ReadDirectory")),
         "unlink": algorithm(functionReference("this", {}, "Unlink")),
-    })
+    }),
 }
