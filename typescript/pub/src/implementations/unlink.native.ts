@@ -1,12 +1,12 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gthis from "../definition/glossary"
+import * as gthis from "../glossary"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { unlink } from "../definition/api.generated"
+import { unlink } from "../api.generated"
 
 export const $$: unlink = ($) => {
     return pi.wrapAsyncValueImp(

@@ -18,7 +18,6 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
         "glo-pareto-common": null,
     }),
     'type': ['resource', {
-        'definition': {
             'glossary': {
                 'root': glossary,
                 'imports': d({
@@ -32,7 +31,6 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                     "this": this_(),
                 }),
             },
-        },
         'nativeDependencies': d({}),
         'devDependencies': d({
             "@types/node": null,

@@ -1,5 +1,5 @@
 
-import * as gthis from "../definition/glossary"
+import * as gthis from "../glossary"
 
 import * as pth from "path"
 import * as fs from "fs"

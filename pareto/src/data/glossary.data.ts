@@ -55,7 +55,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "AnnotatedWriteFileError": type(parametrizedReference("AnnotatedError", {
             "Error": typeReference("WriteFileError"),
         })),
-        "CreateWriterData": type(group({
+        "WriteFileParameters": type(group({
             "path": member(reference("common", "Path")),
             "createContainingDirectories": member(boolean()),
         })),
@@ -161,6 +161,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
     }),
     'builders': d({
+
+        //these should be defined somewhere but is this the place
+        // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),
+        // "HandleReadFileError": func(typeReference("AnnotatedReadFileError"), null, null, null),
+        // "HandleMkdirError": func(typeReference("AnnotatedMkdirError"), null, null, null),
+        // "HandleUnlinkError": func(typeReference("AnnotatedUnlinkError"), null, null, null),
+        "OnWriteFileError": builderMethod(typeReference("AnnotatedWriteFileError"))
     }),
     'interfaces': d({
         // "Reader": ['group', {
@@ -175,15 +182,8 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
         "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
         //"OpenFIleStream": func(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
-        "CreateWriter": func(typeReference("CreateWriterData"), builderReference("common", "StringBuilder"), null, null),
+        "WriteFile": func(typeReference("WriteFileParameters"), builderReference("common", "StringBuilder"), builderReference("OnWriteFileError"), null),
 
-        //these should be defined somewhere but is this the place
-        // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),
-        // "HandleReadFileError": func(typeReference("AnnotatedReadFileError"), null, null, null),
-        // "HandleMkdirError": func(typeReference("AnnotatedMkdirError"), null, null, null),
-        // "HandleUnlinkError": func(typeReference("AnnotatedUnlinkError"), null, null, null),
 
-        //shouldn't this be an interface method on CreateWriteStream?
-        "HandleWriteFileError": func(typeReference("AnnotatedWriteFileError"), null, null, null),
     }),
 }

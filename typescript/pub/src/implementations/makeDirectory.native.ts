@@ -1,12 +1,12 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gapi from "../definition/glossary"
+import * as gthis from "../glossary"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { makeDirectory } from "../definition/api.generated"
+import { makeDirectory } from "../api.generated"
 
 export const $$: makeDirectory = ($) => {
     const joinedPath = joinPath($.path)
@@ -22,7 +22,7 @@ export const $$: makeDirectory = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): gapi.T.MkdirError {
+                        function createError(): gthis.T.MkdirError {
 
                             switch (errCode) {
                                 //what is the error code for exists????

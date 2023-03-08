@@ -1,4 +1,4 @@
-import * as gthis from "../definition/glossary"
+import * as gthis from "../glossary"
 import * as gcommon from "glo-pareto-common"
 
 import * as nfs from "fs"

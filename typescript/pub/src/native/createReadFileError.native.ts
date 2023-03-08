@@ -1,5 +1,5 @@
 
-import * as gthis from "../definition/glossary"
+import * as gthis from "../glossary"
 
 
 export function createFileError(

@@ -1,14 +1,14 @@
 
 import * as pi from 'pareto-core-internals'
 
-import * as gapi from "../definition/glossary"
+import * as gthis from "../glossary"
 
 import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 import { createDirNodeData } from "../native/createDirNodeData.native"
 
-import { readDirectory } from "../definition/api.generated"
+import { readDirectory } from "../api.generated"
 
 export const $$: readDirectory = ($) => {
     const joinedPath = joinPath($.path)
@@ -23,7 +23,7 @@ export const $$: readDirectory = ($) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
-                        function createError(): gapi.T.ReadDirError {
+                        function createError(): gthis.T.ReadDirError {
 
                             switch (errCode) {
                                 case 'ENOENT':
@@ -41,7 +41,7 @@ export const $$: readDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        const values: { [key: string]: gapi.T.DirNodeData } = {}
+                        const values: { [key: string]: gthis.T.DirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)

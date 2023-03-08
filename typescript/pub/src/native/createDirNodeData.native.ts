@@ -1,6 +1,6 @@
 import * as fs from "fs"
 
-import * as gthis from "../definition/glossary"
+import * as gthis from "../glossary"
 
 export function createDirNodeData(path: string, dirent: fs.Dirent): gthis.T.DirNodeData {
     return {
