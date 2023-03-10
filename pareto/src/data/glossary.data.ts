@@ -146,14 +146,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "Success": typeReference("common", "Null"),
         })),
 
-        "WriteFile_Result": type(parametrizedReference("Result", {
-            "Error": typeReference("AnnotatedWriteFileError"),
-            "Success": typeReference("common", "Null"),
-        })),
+        // "WriteFile_Result": type(parametrizedReference("Result", {
+        //     "Error": typeReference("AnnotatedWriteFileError"),
+        //     "Success": typeReference("common", "Null"),
+        // })),
 
         "WriteFileData": type(group({
             "path": member(reference("common", "Path")),
-            "adata": member(string()),
             "createContainingDirectories": member(boolean()),
         })),
         "WriteFileError": type(taggedUnion({

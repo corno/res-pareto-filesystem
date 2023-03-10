@@ -228,11 +228,7 @@ export namespace T {
             readonly 'message': string
         }]
     
-    export type WriteFile_$Result = T.Result<T.AnnotatedWriteFileError, g_common.T.Null>
-    
     export namespace WriteFileData {
-        
-        export type adata = string
         
         export type createContainingDirectories = boolean
         
@@ -240,7 +236,6 @@ export namespace T {
     }
     
     export type WriteFileData = {
-        readonly 'adata': string
         readonly 'createContainingDirectories': boolean
         readonly 'path': g_common.T.Path
     }
