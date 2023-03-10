@@ -7,8 +7,8 @@ import {
     dictionary, member, taggedUnion, types, group,
     array,
     typeReference,
-    data,
-    func,
+    adata,
+    afunc,
     type,
     optional,
     reference,
@@ -20,7 +20,11 @@ import {
     parametrizedType,
     typeParameter,
     boolean,
-    
+    stream,
+    interfaceMethod,
+    inf,
+    interfaceReference,
+
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -112,7 +116,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "Success": typeReference("common", "String"),
         })),
 
-        "ReadFile_Result": type( group({})),
+        "ReadFile_Result": type(group({})),
         "ReadFileError": type(taggedUnion({
             "no entity": null_(),
             "is directory": null_(),
@@ -120,21 +124,21 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "message": member(string()),
             }),
         })),
-        "RmdirError": type( taggedUnion({
+        "RmdirError": type(taggedUnion({
             "no entity": null_(),
             "not empty": null_(),
             "unknown": group({
                 "message": member(string()),
             }),
         })),
-        "UnlinkError": type( taggedUnion({
+        "UnlinkError": type(taggedUnion({
             "no entity": null_(),
             "is directory": null_(),
             "unknown": group({
                 "message": member(string()),
             }),
         })),
-        "Unlink_Data": type( group({
+        "Unlink_Data": type(group({
             "path": member(reference("common", "Path")),
         })),
         "Unlink_Result": type(parametrizedReference("Result", {
@@ -147,12 +151,12 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "Success": typeReference("common", "Null"),
         })),
 
-        "WriteFileData": type( group({
+        "WriteFileData": type(group({
             "path": member(reference("common", "Path")),
-            "data": member(string()),
+            "adata": member(string()),
             "createContainingDirectories": member(boolean()),
         })),
-        "WriteFileError": type( taggedUnion({
+        "WriteFileError": type(taggedUnion({
             "no entity": null_(),
             "is directory": null_(),
             "unknown": group({
@@ -160,30 +164,39 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             }),
         })),
     }),
-    'builders': d({
+    'type': ['asynchronous', {
 
-        //these should be defined somewhere but is this the place
-        // "HandleReadDirError": func(typeReference("AnnotatedReadDirFileError"), null, null, null),
-        // "HandleReadFileError": func(typeReference("AnnotatedReadFileError"), null, null, null),
-        // "HandleMkdirError": func(typeReference("AnnotatedMkdirError"), null, null, null),
-        // "HandleUnlinkError": func(typeReference("AnnotatedUnlinkError"), null, null, null),
-        "OnWriteFileError": builderMethod(typeReference("AnnotatedWriteFileError"))
-    }),
-    'interfaces': d({
-        // "Reader": ['group', {
-        //     'members': d({
-        //         "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
-        //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
-        //     }),
-        // }]
-    }),
-    'functions': d({
-        "MakeDirectory": func(typeReference("Mkdir_Data"), null, null, data(typeReference("Mkdir_Result"), true)),
-        "ReadDirectory": func(typeReference("ReadDirectory_Data"), null, null, data(typeReference("ReadDirectory_Result"), true)),
-        "Unlink": func(typeReference("Unlink_Data"), null, null, data(typeReference("Unlink_Result"), true)),
-        //"OpenFIleStream": func(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
-        "WriteFile": func(typeReference("WriteFileParameters"), builderReference("common", "StringBuilder"), builderReference("OnWriteFileError"), null),
+        'interfaces': d({
+            //these should be defined somewhere but is this the place
+            // "HandleReadDirError": afunc(typeReference("AnnotatedReadDirFileError"), null, null, null),
+            // "HandleReadFileError": afunc(typeReference("AnnotatedReadFileError"), null, null, null),
+            // "HandleMkdirError": afunc(typeReference("AnnotatedMkdirError"), null, null, null),
+            // "HandleUnlinkError": afunc(typeReference("AnnotatedUnlinkError"), null, null, null),
 
 
-    }),
+            "OnFileWriteError": interfaceMethod(typeReference("AnnotatedWriteFileError")),
+
+
+            // "Reader": ['group', {
+            //     'members': d({
+            //         "init": builderMethod(null, ['reference', builderReference("StreamConsumer")]),
+            //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
+            //     }),
+            // }]
+            "StringStreamConsumer": stream(
+                interfaceMethod(typeReference("common", "String")),
+                interfaceMethod(null),
+            ),
+
+        }),
+        'functions': d({
+            "MakeDirectory": afunc(typeReference("Mkdir_Data"), null, adata(typeReference("Mkdir_Result"))),
+            "ReadDirectory": afunc(typeReference("ReadDirectory_Data"),  null, adata(typeReference("ReadDirectory_Result"))),
+            "Unlink": afunc(typeReference("Unlink_Data"), null,  adata(typeReference("Unlink_Result"))),
+            //"OpenFIleStream": afunc(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
+            "CreateFileWriter": afunc(typeReference("WriteFileParameters"),  interfaceReference("OnFileWriteError"), inf(interfaceReference("StringStreamConsumer"))),
+
+
+        }),
+    }],
 }

@@ -232,16 +232,16 @@ export namespace T {
     
     export namespace WriteFileData {
         
-        export type createContainingDirectories = boolean
+        export type adata = string
         
-        export type data = string
+        export type createContainingDirectories = boolean
         
         export type path = g_common.T.Path
     }
     
     export type WriteFileData = {
+        readonly 'adata': string
         readonly 'createContainingDirectories': boolean
-        readonly 'data': string
         readonly 'path': g_common.T.Path
     }
     
