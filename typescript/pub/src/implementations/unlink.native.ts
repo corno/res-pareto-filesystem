@@ -1,6 +1,6 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 import * as nfs from "fs"
 
@@ -19,7 +19,7 @@ export const $$: unlink = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): gthis.T.UnlinkError {
+                        function createError(): g_this.T.UnlinkError {
 
                             switch (errCode) {
                                 case 'ENOENT':

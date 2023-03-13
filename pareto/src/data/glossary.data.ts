@@ -27,10 +27,10 @@ import {
 
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 const d = pd.d
 
-export const $: gglossary.T.Glossary<pd.SourceLocation> = {
+export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
     'types': d({
         "AnnotatedError": parametrizedType({ "Error": null }, group({
@@ -49,6 +49,9 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
         "AnnotatedReadFileError": type(parametrizedReference("AnnotatedError", {
             "Error": typeReference("ReadFileError"),
+        })),
+        "AnnotatedRmdirError": type(parametrizedReference("AnnotatedError", {
+            "Error": typeReference("RmdirError"),
         })),
         "AnnotatedMkdirError": type(parametrizedReference("AnnotatedError", {
             "Error": typeReference("MkdirError"),
@@ -167,10 +170,10 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
 
         'interfaces': d({
             //these should be defined somewhere but is this the place
-            // "HandleReadDirError": afunc(typeReference("AnnotatedReadDirFileError"), null, null, null),
-            // "HandleReadFileError": afunc(typeReference("AnnotatedReadFileError"), null, null, null),
-            // "HandleMkdirError": afunc(typeReference("AnnotatedMkdirError"), null, null, null),
-            // "HandleUnlinkError": afunc(typeReference("AnnotatedUnlinkError"), null, null, null),
+            // "HandleReadDirError": interfaceMethod(typeReference("AnnotatedReadDirFileError"), null, null, null),
+            // "HandleReadFileError": interfaceMethod(typeReference("AnnotatedReadFileError"), null, null, null),
+            // "HandleMkdirError": interfaceMethod(typeReference("AnnotatedMkdirError"), null, null, null),
+            // "HandleUnlinkError": interfaceMethod(typeReference("AnnotatedUnlinkError"), null, null, null),
 
 
             "OnFileWriteError": interfaceMethod(typeReference("AnnotatedWriteFileError")),

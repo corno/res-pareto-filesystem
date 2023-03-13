@@ -1,6 +1,6 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 import { createContainingDirectories } from "../native/createContainingDirectories.native"
 import { joinPath } from "../native/joinPath.native"
@@ -12,7 +12,7 @@ import * as n_fs from "fs"
 export const $$: createFileWriter = ($, $i) => {
     const joinedPath = joinPath($.path)
 
-    function createError(errcode: string, message: string): gthis.T.WriteFileError {
+    function createError(errcode: string, message: string): g_this.T.WriteFileError {
 
         switch (errcode) {
             case 'ENOENT':

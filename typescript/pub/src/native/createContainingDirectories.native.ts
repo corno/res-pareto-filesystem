@@ -1,5 +1,5 @@
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 import * as pth from "path"
 import * as fs from "fs"
@@ -7,7 +7,7 @@ import * as fs from "fs"
 export function createContainingDirectories(
     path: string,
     onDone: () => void,
-    onError: ($: gthis.T.WriteFileError) => void
+    onError: ($: g_this.T.WriteFileError) => void
 ) {
 
     fs.mkdir(

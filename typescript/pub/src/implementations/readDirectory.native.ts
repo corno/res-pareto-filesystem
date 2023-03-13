@@ -1,7 +1,7 @@
 
 import * as pi from 'pareto-core-internals'
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 import * as nfs from "fs"
 
@@ -23,7 +23,7 @@ export const $$: readDirectory = ($) => {
                     if (err !== null) {
                         const errCode = err.code
                         const errMessage = err.message
-                        function createError(): gthis.T.ReadDirError {
+                        function createError(): g_this.T.ReadDirError {
 
                             switch (errCode) {
                                 case 'ENOENT':
@@ -41,7 +41,7 @@ export const $$: readDirectory = ($) => {
                             path: joinedPath
                         }])
                     } else {
-                        const values: { [key: string]: gthis.T.DirNodeData } = {}
+                        const values: { [key: string]: g_this.T.DirNodeData } = {}
 
                         files.forEach(($) => {
                             values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)

@@ -1,10 +1,10 @@
 import * as pi from 'pareto-core-internals'
 
 import * as pth from "path"
-import * as gcommon from "glo-pareto-common"
+import * as g_common from "glo-pareto-common"
 
 export function joinPath(
-    path: gcommon.T.Path
+    path: g_common.T.Path
 ) {
     return pth.join(...pi.flatten(path))
 }

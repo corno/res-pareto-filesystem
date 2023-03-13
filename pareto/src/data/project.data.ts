@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
-import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
-import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
@@ -10,7 +10,7 @@ import { $ as glossary } from "./glossary.data"
 
 import { external, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
-export const $: gproject.T.Project<pd.SourceLocation> = {
+export const $: g_project.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "a pareto wrapper around the fs library of NodeJS",
     'license': "TBD",
@@ -44,7 +44,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'types': d({}),
                 'type': ['synchronous', {
                     'builders': d({}),
-                    'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
+                    'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
                 }],
             },
             'imports': d({}),

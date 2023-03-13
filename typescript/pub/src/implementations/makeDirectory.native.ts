@@ -1,6 +1,6 @@
 import * as pi from 'pareto-core-internals'
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 import * as nfs from "fs"
 
@@ -22,7 +22,7 @@ export const $$: makeDirectory = ($) => {
                         const errCode = err.code
                         const errMessage = err.message
 
-                        function createError(): gthis.T.MkdirError {
+                        function createError(): g_this.T.MkdirError {
 
                             switch (errCode) {
                                 //what is the error code for exists????

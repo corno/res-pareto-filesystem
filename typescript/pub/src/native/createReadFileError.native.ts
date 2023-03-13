@@ -1,10 +1,10 @@
 
-import * as gthis from "../glossary"
+import * as g_this from "../glossary"
 
 
 export function createFileError(
     err: NodeJS.ErrnoException
-): gthis.T.ReadFileError {
+): g_this.T.ReadFileError {
 
     switch (err.code) {
         case 'ENOENT':

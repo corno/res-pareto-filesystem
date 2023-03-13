@@ -22,6 +22,8 @@ export namespace T {
     
     export type AnnotatedReadFileError = T.AnnotatedError<T.ReadFileError>
     
+    export type AnnotatedRmdirError = T.AnnotatedError<T.RmdirError>
+    
     export type AnnotatedUnlinkError = T.AnnotatedError<T.UnlinkError>
     
     export type AnnotatedWriteFileError = T.AnnotatedError<T.WriteFileError>
