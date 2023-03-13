@@ -11,12 +11,10 @@ import {
     afunc,
     type,
     optional,
-    reference,
     number,
     builderMethod,
     builderReference,
     glossaryParameter,
-    parametrizedReference,
     parametrizedType,
     typeParameter,
     boolean,
@@ -24,6 +22,9 @@ import {
     interfaceMethod,
     inf,
     interfaceReference,
+    ref,
+    externalTypeReference,
+    imp,
 
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
@@ -32,9 +33,12 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
+    'imports': d({
+        "common": imp({}),
+    }),
     'types': d({
         "AnnotatedError": parametrizedType({ "Error": null }, group({
-            "path": member(reference("common", "String")),
+            "path": member(ref(externalTypeReference("common", "String"))),
             "error": member(typeParameter("Error")),
         })),
         "Result": parametrizedType({
@@ -44,26 +48,26 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "error": typeParameter("Error"),
             "success": typeParameter("Success"),
         })),
-        "AnnotatedReadDirError": type(parametrizedReference("AnnotatedError", {
+        "AnnotatedReadDirError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("ReadDirError"),
-        })),
-        "AnnotatedReadFileError": type(parametrizedReference("AnnotatedError", {
+        }))),
+        "AnnotatedReadFileError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("ReadFileError"),
-        })),
-        "AnnotatedRmdirError": type(parametrizedReference("AnnotatedError", {
+        }))),
+        "AnnotatedRmdirError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("RmdirError"),
-        })),
-        "AnnotatedMkdirError": type(parametrizedReference("AnnotatedError", {
+        }))),
+        "AnnotatedMkdirError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("MkdirError"),
-        })),
-        "AnnotatedUnlinkError": type(parametrizedReference("AnnotatedError", {
+        }))),
+        "AnnotatedUnlinkError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("UnlinkError"),
-        })),
-        "AnnotatedWriteFileError": type(parametrizedReference("AnnotatedError", {
+        }))),
+        "AnnotatedWriteFileError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("WriteFileError"),
-        })),
+        }))),
         "WriteFileParameters": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
             "createContainingDirectories": member(boolean()),
         })),
         // "AnnotatedReadFileError": group({
@@ -92,21 +96,21 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }),
         })),
         "Mkdir_Data": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
             "createContainingDirectories": member(boolean()),
         })),
-        "Mkdir_Result": type(parametrizedReference("Result", {
+        "Mkdir_Result": type(ref(typeReference("Result", {
             "Error": typeReference("AnnotatedMkdirError"),
-            "Success": typeReference("common", "Null"),
-        })),
+            "Success": externalTypeReference("common", "Null"),
+        }))),
         "ReadDirectory_Data": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
         })),
-        "ReadDirectory_Success": type(dictionary(reference("DirNodeData"))),
-        "ReadDirectory_Result": type(parametrizedReference("Result", {
+        "ReadDirectory_Success": type(dictionary(ref(typeReference("DirNodeData")))),
+        "ReadDirectory_Result": type(ref(typeReference("Result", {
             "Error": typeReference("AnnotatedReadDirError"),
             "Success": typeReference("ReadDirectory_Success"),
-        })),
+        }))),
         "ReadDirError": type(taggedUnion({
             "no entity": null_(),
             "is not directory": null_(),
@@ -114,10 +118,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "message": member(string()),
             }),
         })),
-        "ReadFile_Data": type(parametrizedReference("Result", {
+        "ReadFile_Data": type(ref(typeReference("Result", {
             "Error": typeReference("AnnotatedReadFileError"),
-            "Success": typeReference("common", "String"),
-        })),
+            "Success": externalTypeReference("common", "String"),
+        }))),
 
         "ReadFile_Result": type(group({})),
         "ReadFileError": type(taggedUnion({
@@ -142,20 +146,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }),
         })),
         "Unlink_Data": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
         })),
-        "Unlink_Result": type(parametrizedReference("Result", {
+        "Unlink_Result": type(ref(typeReference("Result", {
             "Error": typeReference("AnnotatedUnlinkError"),
-            "Success": typeReference("common", "Null"),
-        })),
+            "Success": externalTypeReference("common", "Null"),
+        }))),
 
-        // "WriteFile_Result": type(parametrizedReference("Result", {
+        // "WriteFile_Result": type(ref(typeReference("Result", {
         //     "Error": typeReference("AnnotatedWriteFileError"),
         //     "Success": typeReference("common", "Null"),
         // })),
 
         "WriteFileData": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
             "createContainingDirectories": member(boolean()),
         })),
         "WriteFileError": type(taggedUnion({
@@ -186,7 +190,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //     }),
             // }]
             "StringStreamConsumer": stream(
-                interfaceMethod(typeReference("common", "String")),
+                interfaceMethod(externalTypeReference("common", "String")),
                 interfaceMethod(null),
             ),
 
