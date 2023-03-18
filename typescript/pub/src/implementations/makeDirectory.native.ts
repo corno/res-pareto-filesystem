@@ -6,9 +6,9 @@ import * as nfs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { makeDirectory } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: makeDirectory = ($) => {
+export const $$: A.makeDirectory = ($) => {
     const joinedPath = joinPath($.path)
     return pi.wrapAsyncValueImp(
         (cb) => {

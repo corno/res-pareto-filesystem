@@ -1,34 +1,13 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    string,
-    null_,
-    nested,
-    dictionary, member, taggedUnion, types, group,
-    array,
-    typeReference,
-    adata,
-    afunc,
-    type,
-    optional,
-    number,
-    builderMethod,
-    builderReference,
-    glossaryParameter,
-    parametrizedType,
-    typeParameter,
-    boolean,
-    stream,
-    interfaceMethod,
-    inf,
-    interfaceReference,
-    ref,
-    externalTypeReference,
-    imp,
-
+    aconstructor,
+    afunction, aInterfaceMethod, aInterfaceReference, boolean, data, dictionary, externalTypeReference, group, imp, inf,
+    member, null_, parametrizedType, ref, stream, string, taggedUnion, type, typeParameter, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+
 const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
@@ -170,8 +149,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }),
         })),
     }),
-    'type': ['asynchronous', {
-
+    'asynchronous': {
         'interfaces': d({
             //these should be defined somewhere but is this the place
             // "HandleReadDirError": interfaceMethod(typeReference("AnnotatedReadDirFileError"), null, null, null),
@@ -180,7 +158,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             // "HandleUnlinkError": interfaceMethod(typeReference("AnnotatedUnlinkError"), null, null, null),
 
 
-            "OnFileWriteError": interfaceMethod(typeReference("AnnotatedWriteFileError")),
+            "OnFileWriteError": aInterfaceMethod(typeReference("AnnotatedWriteFileError")),
 
 
             // "Reader": ['group', {
@@ -190,19 +168,26 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //     }),
             // }]
             "StringStreamConsumer": stream(
-                interfaceMethod(externalTypeReference("common", "String")),
-                interfaceMethod(null),
+                aInterfaceMethod(externalTypeReference("common", "String")),
+                aInterfaceMethod(null),
             ),
-
+            "WriteFile": aInterfaceMethod(typeReference("WriteFileParameters"), ['reference', aInterfaceReference("StringStreamConsumer")]),
+        }),
+        'constructors': d({
+            "CreateFileWriter": aconstructor(aInterfaceReference("WriteFile"),  {
+                "onWriteFileError": aInterfaceReference("OnFileWriteError"),
+            }),
         }),
         'functions': d({
-            "MakeDirectory": afunc(typeReference("Mkdir_Data"), null, adata(typeReference("Mkdir_Result"))),
-            "ReadDirectory": afunc(typeReference("ReadDirectory_Data"),  null, adata(typeReference("ReadDirectory_Result"))),
-            "Unlink": afunc(typeReference("Unlink_Data"), null,  adata(typeReference("Unlink_Result"))),
+            "MakeDirectory": afunction(data(typeReference("Mkdir_Data")), typeReference("Mkdir_Result")),
+            "ReadDirectory": afunction(data(typeReference("ReadDirectory_Data")), typeReference("ReadDirectory_Result")),
+            "Unlink": afunction(data(typeReference("Unlink_Data")), typeReference("Unlink_Result")),
             //"OpenFIleStream": afunc(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
-            "CreateFileWriter": afunc(typeReference("WriteFileParameters"),  interfaceReference("OnFileWriteError"), inf(interfaceReference("StringStreamConsumer"))),
-
-
         }),
-    }],
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'constructors': d({}),
+        'functions': d({}),
+    },
 }

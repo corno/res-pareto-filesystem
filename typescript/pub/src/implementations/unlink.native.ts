@@ -2,17 +2,17 @@ import * as pi from 'pareto-core-internals'
 
 import * as g_this from "../glossary"
 
-import * as nfs from "fs"
+import * as n_fs from "fs"
 
 import { joinPath } from "../native/joinPath.native"
 
-import { unlink } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: unlink = ($) => {
+export const $$: A.unlink = ($) => {
     return pi.wrapAsyncValueImp(
         (cb) => {
             const joinedPath = joinPath($.path)
-            nfs.unlink(
+            n_fs.unlink(
                 joinedPath,
                 (err) => {
                     if (err !== null) {
