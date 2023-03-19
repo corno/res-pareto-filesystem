@@ -173,21 +173,19 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             ),
             "WriteFile": aInterfaceMethod(typeReference("WriteFileParameters"), ['reference', aInterfaceReference("StringStreamConsumer")]),
         }),
-        'constructors': d({
+        'algorithms': d({
             "CreateFileWriter": aconstructor(aInterfaceReference("WriteFile"),  {
                 "onWriteFileError": aInterfaceReference("OnFileWriteError"),
             }),
-        }),
-        'functions': d({
-            "MakeDirectory": afunction(data(typeReference("Mkdir_Data")), typeReference("Mkdir_Result")),
-            "ReadDirectory": afunction(data(typeReference("ReadDirectory_Data")), typeReference("ReadDirectory_Result")),
-            "Unlink": afunction(data(typeReference("Unlink_Data")), typeReference("Unlink_Result")),
+            "MakeDirectory": afunction(typeReference("Mkdir_Result"), data(typeReference("Mkdir_Data"))),
+            "ReadDirectory": afunction(typeReference("ReadDirectory_Result"), data(typeReference("ReadDirectory_Data"))),
+            "Unlink": afunction(typeReference("Unlink_Result"), data(typeReference("Unlink_Data"))),
             //"OpenFIleStream": afunc(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
         }),
     },
     'synchronous': {
         'interfaces': d({}),
-        'constructors': d({}),
-        'functions': d({}),
+        'algorithms': d({}),
+        
     },
 }

@@ -15,23 +15,32 @@ export namespace ASYNC {
             'end': () => void
         }
         
-        export type WriteFile = ($: T.WriteFileParameters, ) => I.StringStreamConsumer
+        export type WriteFile = ($: T.WriteFileParameters, ) => ASYNC.I.StringStreamConsumer
     }
     
-    export namespace C {
+    export namespace A {
         
-        export type CreateFileWriter = ($is: {
-            'onWriteFileError': I.OnFileWriteError
-        }) => I.WriteFile
-    }
-    
-    export namespace F {
         
-        export type MakeDirectory = ($: T.Mkdir_$Data) => pt.AsyncValue<T.Mkdir_$Result>
+        export namespace C {
+            export type CreateFileWriter = ($is: {
+                'onWriteFileError': ASYNC.I.OnFileWriteError
+            }) => ASYNC.I.WriteFile
+        }
         
-        export type ReadDirectory = ($: T.ReadDirectory_$Data) => pt.AsyncValue<T.ReadDirectory_$Result>
         
-        export type Unlink = ($: T.Unlink_$Data) => pt.AsyncValue<T.Unlink_$Result>
+        export namespace F {
+            export type MakeDirectory = ($: T.Mkdir_$Data) => pt.AsyncValue<T.Mkdir_$Result>
+        }
+        
+        
+        export namespace F {
+            export type ReadDirectory = ($: T.ReadDirectory_$Data) => pt.AsyncValue<T.ReadDirectory_$Result>
+        }
+        
+        
+        export namespace F {
+            export type Unlink = ($: T.Unlink_$Data) => pt.AsyncValue<T.Unlink_$Result>
+        }
     }
 }
 
@@ -39,15 +48,7 @@ export namespace SYNC {
     
     export namespace I {}
     
-    export namespace I2 {}
+    export namespace IW {}
     
-    export namespace I3 {}
-    
-    export namespace C {}
-    
-    export namespace C2 {}
-    
-    export namespace C3 {}
-    
-    export namespace F {}
+    export namespace A {}
 }
