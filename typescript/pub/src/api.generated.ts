@@ -14,8 +14,8 @@ export namespace A {
 }
 
 export type API = {
-    createFileWriter: A.createFileWriter
-    makeDirectory: A.makeDirectory
-    readDirectory: A.readDirectory
-    unlink: A.unlink
+    readonly 'createFileWriter': A.createFileWriter
+    readonly 'makeDirectory': A.makeDirectory
+    readonly 'readDirectory': A.readDirectory
+    readonly 'unlink': A.unlink
 }
