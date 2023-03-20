@@ -4,13 +4,13 @@ import * as g_this from "./glossary"
 
 export namespace A {
     
-    export type createFileWriter = g_this.ASYNC.A.C.CreateFileWriter
+    export type createFileWriter = () => g_this.ASYNC.A.C.CreateFileWriter
     
-    export type makeDirectory = g_this.ASYNC.A.F.MakeDirectory
+    export type makeDirectory = () => g_this.ASYNC.A.F.MakeDirectory
     
-    export type readDirectory = g_this.ASYNC.A.F.ReadDirectory
+    export type readDirectory = () => g_this.ASYNC.A.F.ReadDirectory
     
-    export type unlink = g_this.ASYNC.A.F.Unlink
+    export type unlink = () => g_this.ASYNC.A.F.Unlink
 }
 
 export type API = {

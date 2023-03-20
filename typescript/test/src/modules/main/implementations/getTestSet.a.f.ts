@@ -12,7 +12,7 @@ import { getTestSet } from "../api.generated"
 
 export const $$: getTestSet = ($) => {
     pl.processAsyncValue(
-        g_pub.$r.readDirectory({ path: ["..", "..", "pub", "src"] }),
+        g_pub.$r.readDirectory()({ path: ["..", "..", "pub", "src"] }),
         ($) => {
             switch ($[0]) {
                 case 'error':

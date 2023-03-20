@@ -8,41 +8,43 @@ import { joinPath } from "../native/joinPath.native"
 
 import { A } from "../api.generated"
 
-export const $$: A.makeDirectory = ($) => {
-    const joinedPath = joinPath($.path)
-    return pi.wrapAsyncValueImp(
-        (cb) => {
-            nfs.mkdir(
-                joinedPath,
-                {
-                    recursive: $.createContainingDirectories,
-                },
-                (err) => {
-                    if (err !== null) {
-                        const errCode = err.code
-                        const errMessage = err.message
+export const $$: A.makeDirectory = () => {
+    return ($) => {
+        const joinedPath = joinPath($.path)
+        return pi.wrapAsyncValueImp(
+            (cb) => {
+                nfs.mkdir(
+                    joinedPath,
+                    {
+                        recursive: $.createContainingDirectories,
+                    },
+                    (err) => {
+                        if (err !== null) {
+                            const errCode = err.code
+                            const errMessage = err.message
 
-                        function createError(): g_this.T.MkdirError {
+                            function createError(): g_this.T.MkdirError {
 
-                            switch (errCode) {
-                                //what is the error code for exists????
-                                case 'ENOENT':
-                                    return ['no entity',  null]
-                                default: {
-                                    console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
-                                    return ['unknown',  { message: errMessage }]
+                                switch (errCode) {
+                                    //what is the error code for exists????
+                                    case 'ENOENT':
+                                        return ['no entity', null]
+                                    default: {
+                                        console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem MKDIR: ${errMessage}`)
+                                        return ['unknown', { message: errMessage }]
+                                    }
                                 }
                             }
+                            cb(['error', {
+                                error: createError(),
+                                path: joinedPath,
+                            }])
+                        } else {
+                            cb(['success', null])
                         }
-                        cb(['error',  {
-                            error: createError(),
-                            path: joinedPath,
-                        }])
-                    } else {
-                        cb(['success',  null])
                     }
-                }
-            )
-        }
-    )
+                )
+            }
+        )
+    }
 }
