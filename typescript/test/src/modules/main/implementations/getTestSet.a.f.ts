@@ -8,9 +8,9 @@ import * as g_test from "lib-pareto-test"
 
 import * as g_pub from "../../../../../pub"
 
-import { getTestSet } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: getTestSet = ($) => {
+export const $$: A.getTestSet = ($) => {
     pl.processAsyncValue(
         g_pub.$r.readDirectory()({ path: ["..", "..", "pub", "src"] }),
         ($) => {
