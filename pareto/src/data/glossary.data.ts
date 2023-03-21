@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import {
     aconstructor,
     afunction, aInterfaceMethod, aInterfaceReference, boolean, data, dictionary, externalTypeReference, group, imp, inf,
-    member, null_, parametrizedType, ref, stream, string, taggedUnion, type, typeParameter, typeReference
+    member, null_, parametrizedType, ref, streamconsumer, string, taggedUnion, type, typeParameter, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -97,12 +97,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "message": member(string()),
             }),
         })),
-        "ReadFile_Data": type(ref(typeReference("Result", {
+        "ReadFile_Result": type(ref(typeReference("Result", {
             "Error": typeReference("AnnotatedReadFileError"),
             "Success": externalTypeReference("common", "String"),
         }))),
 
-        "ReadFile_Result": type(group({})),
+        "ReadFile_Data": type(group({
+            "path": member(ref(externalTypeReference("common", "Path"))),
+        })),
         "ReadFileError": type(taggedUnion({
             "no entity": null_(),
             "is directory": null_(),
@@ -167,7 +169,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
             //     }),
             // }]
-            "StringStreamConsumer": stream(
+            "StringStreamConsumer": streamconsumer(
                 aInterfaceMethod(externalTypeReference("common", "String")),
                 aInterfaceMethod(null),
             ),

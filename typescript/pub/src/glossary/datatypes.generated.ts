@@ -133,11 +133,16 @@ export namespace T {
             readonly 'message': string
         }]
     
-    export type ReadFile_$Data = T.Result<T.AnnotatedReadFileError, g_common.T.String>
+    export namespace ReadFile_$Data {
+        
+        export type path = g_common.T.Path
+    }
     
-    export namespace ReadFile_$Result {}
+    export type ReadFile_$Data = {
+        readonly 'path': g_common.T.Path
+    }
     
-    export type ReadFile_$Result = null
+    export type ReadFile_$Result = T.Result<T.AnnotatedReadFileError, g_common.T.String>
     
     export namespace ReadFileError {
         
