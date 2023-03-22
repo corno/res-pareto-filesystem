@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    aconstructor,
+    constructor,
     afunction, aInterfaceMethod, aInterfaceReference, boolean, data, dictionary, externalTypeReference, group, imp, inf,
     member, null_, parametrizedType, ref, streamconsumer, string, taggedUnion, type, typeParameter, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
@@ -176,12 +176,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "WriteFile": aInterfaceMethod(typeReference("WriteFileParameters"), ['reference', aInterfaceReference("StringStreamConsumer")]),
         }),
         'algorithms': d({
-            "CreateFileWriter": aconstructor(aInterfaceReference("WriteFile"),  {
+            "CreateFileWriter": constructor(aInterfaceReference("WriteFile"),  {
                 "onWriteFileError": aInterfaceReference("OnFileWriteError"),
             }),
-            "MakeDirectory": afunction(typeReference("Mkdir_Result"), data(typeReference("Mkdir_Data"))),
-            "ReadDirectory": afunction(typeReference("ReadDirectory_Result"), data(typeReference("ReadDirectory_Data"))),
-            "Unlink": afunction(typeReference("Unlink_Result"), data(typeReference("Unlink_Data"))),
+            "MakeDirectory": afunction(typeReference("Mkdir_Result"), typeReference("Mkdir_Data")),
+            "ReadDirectory": afunction(typeReference("ReadDirectory_Result"), typeReference("ReadDirectory_Data")),
+            "Unlink": afunction(typeReference("Unlink_Result"), typeReference("Unlink_Data")),
             //"OpenFIleStream": afunc(typeReference("common", "Path"), null, null, inf(interfaceReference("Reader"))),
         }),
     },
