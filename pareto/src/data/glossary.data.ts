@@ -2,8 +2,8 @@ import * as pd from 'pareto-core-data'
 
 import {
     constructor,
-    afunction, aInterfaceMethod, aInterfaceReference, boolean, data, dictionary, externalTypeReference, group, imp, inf,
-    member, null_, parametrizedType, ref, streamconsumer, string, taggedUnion, type, typeParameter, typeReference
+    afunction, aInterfaceMethod, aInterfaceReference, boolean, data, dictionary, externalTypeReference, group, imp,
+    member, null_, parametrizedType, ref, streamconsumer, string, taggedUnion, type, typeParameter, typeReference, aInterface
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -18,14 +18,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'types': d({
         "AnnotatedError": parametrizedType({ "Error": null }, group({
             "path": member(ref(externalTypeReference("common", "String"))),
-            "error": member(typeParameter("Error")),
+            "error": member(ref(typeParameter("Error"))),
         })),
         "Result": parametrizedType({
             "Error": null,
             "Success": null,
         }, taggedUnion({
-            "error": typeParameter("Error"),
-            "success": typeParameter("Success"),
+            "error": ref(typeParameter("Error")),
+            "success": ref(typeParameter("Success")),
         })),
         "AnnotatedReadDirError": type(ref(typeReference("AnnotatedError", {
             "Error": typeReference("ReadDirError"),
@@ -160,7 +160,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             // "HandleUnlinkError": interfaceMethod(typeReference("AnnotatedUnlinkError"), null, null, null),
 
 
-            "OnFileWriteError": aInterfaceMethod(typeReference("AnnotatedWriteFileError")),
+            "OnFileWriteError": aInterface( aInterfaceMethod(typeReference("AnnotatedWriteFileError"))),
 
 
             // "Reader": ['group', {
@@ -169,11 +169,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //         "onError": builderMethod(typeReference("AnnotatedReadFileError")),
             //     }),
             // }]
-            "StringStreamConsumer": streamconsumer(
+            "StringStreamConsumer": aInterface( streamconsumer(
                 aInterfaceMethod(externalTypeReference("common", "String")),
                 aInterfaceMethod(null),
-            ),
-            "WriteFile": aInterfaceMethod(typeReference("WriteFileParameters"), ['reference', aInterfaceReference("StringStreamConsumer")]),
+            )),
+            "WriteFile":aInterface( aInterfaceMethod(typeReference("WriteFileParameters"), ['reference', aInterfaceReference("StringStreamConsumer")])),
         }),
         'algorithms': d({
             "CreateFileWriter": constructor(aInterfaceReference("WriteFile"),  {
