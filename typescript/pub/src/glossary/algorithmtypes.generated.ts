@@ -22,9 +22,11 @@ export namespace ASYNC {
         
         
         export namespace C {
-            export type CreateFileWriter = ($is: {
-                readonly 'onWriteFileError': ASYNC.I.OnFileWriteError
-            }) => ASYNC.I.WriteFile
+            export type CreateFileWriter = {
+                'construct': ($is: {
+                    readonly 'onWriteFileError': ASYNC.I.OnFileWriteError
+                }) => ASYNC.I.WriteFile
+            }
         }
         
         
