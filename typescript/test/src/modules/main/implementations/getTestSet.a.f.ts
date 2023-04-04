@@ -16,12 +16,12 @@ export const $$: A.getTestSet = ($) => {
         ($) => {
             switch ($[0]) {
                 case 'error':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
     
                     })
                     break
                 case 'success':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $.__forEach(() => false, ($, key) => {
                             pv.logDebugMessage($.path)
                         })

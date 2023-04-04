@@ -49,7 +49,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }))),
             "WriteFileParameters": type(group({
                 "path": member(ref(externalTypeReference("common", "Path"))),
-                "createContainingDirectories": member(boolean()),
+                "overwrite if exists": member(boolean()),
+                "create containing directories": member(boolean()),
             })),
             // "AnnotatedReadFileError": group({
             //     "path": member(str()),
@@ -141,10 +142,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //     "Success": typeReference("common", "Null"),
             // })),
 
-            "WriteFileData": type(group({
-                "path": member(ref(externalTypeReference("common", "Path"))),
-                "createContainingDirectories": member(boolean()),
-            })),
             "WriteFileError": type(taggedUnion({
                 "no entity": null_(),
                 "is directory": null_(),

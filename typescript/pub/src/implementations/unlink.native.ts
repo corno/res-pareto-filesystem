@@ -23,8 +23,7 @@ export const $$: A.unlink = () => {
                             function createError(): g_this.T.UnlinkError {
 
                                 switch (errCode) {
-                                    case 'ENOENT':
-                                        return ['no entity', null]
+                                    case 'ENOENT': return ['no entity', null]
                                     default: {
                                         console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem UNLINK: ${errMessage}`)
                                         return ['unknown', { message: errMessage }]

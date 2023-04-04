@@ -237,18 +237,6 @@ export namespace T {
             readonly 'message': string
         }]
     
-    export namespace WriteFileData {
-        
-        export type createContainingDirectories = boolean
-        
-        export type path = g_common.T.Path
-    }
-    
-    export type WriteFileData = {
-        readonly 'createContainingDirectories': boolean
-        readonly 'path': g_common.T.Path
-    }
-    
     export namespace WriteFileError {
         
         export type is__directory = null
@@ -274,13 +262,16 @@ export namespace T {
     
     export namespace WriteFileParameters {
         
-        export type createContainingDirectories = boolean
+        export type create__containing__directories = boolean
+        
+        export type overwrite__if__exists = boolean
         
         export type path = g_common.T.Path
     }
     
     export type WriteFileParameters = {
-        readonly 'createContainingDirectories': boolean
+        readonly 'create containing directories': boolean
+        readonly 'overwrite if exists': boolean
         readonly 'path': g_common.T.Path
     }
 }

@@ -27,10 +27,8 @@ export const $$: A.readDirectory = () => {
                             function createError(): g_this.T.ReadDirError {
 
                                 switch (errCode) {
-                                    case 'ENOENT':
-                                        return ['no entity', null]
-                                    case 'ENOTDIR':
-                                        return ['is not directory', null]
+                                    case 'ENOENT': return ['no entity', null]
+                                    case 'ENOTDIR': return ['is not directory', null]
                                     default: {
                                         console.error(`DEV TODO: ADD THIS OPTION TO pareto-filesystem READDIR: ${errMessage}`)
                                         return ['unknown', { message: errMessage }]

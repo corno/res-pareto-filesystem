@@ -7,10 +7,8 @@ export function createFileError(
 ): g_this.T.ReadFileError {
 
     switch (err.code) {
-        case 'ENOENT':
-            return ['no entity',  null]
-        case 'EISDIR':
-            return ['is directory',  null]
+        case 'ENOENT': return ['no entity',  null]
+        case 'EISDIR': return ['is directory',  null]
 
         //case ENOTDIR? if containing dir does not exist    
 
