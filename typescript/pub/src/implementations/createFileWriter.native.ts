@@ -36,19 +36,28 @@ export const $$: A.createFileWriter = () => {
                 const queue: string[] = stream[0] === 'pending'
                     ? stream[1]
                     : []
-                try {
-                    stream = ['initialized', n_fs.createWriteStream(joinedPath, {
-                        'encoding': "utf-8",
-                        'flags': $['overwrite if exists'] ? "w" : "wx"
-                    })]
-                } catch (e) {
-                    //FIXME make sure that the error is thrown because the file already exists
-                    stream = ['failed', null]
-                }
+
+                //trycatch is most likely not necessary, errors will be sent to the error stream I think
+                // try {
+                //     stream = ['initialized', n_fs.createWriteStream(joinedPath, {
+                //         'encoding': "utf-8",
+                //         'flags': $['overwrite if exists'] ? "w" : "wx"
+                //     })]
+                // } catch (e) {
+                //     //FIXME make sure that the error is thrown because the file already exists
+                //     stream = ['failed', null]
+                // }
+
+                stream = ['initialized', n_fs.createWriteStream(joinedPath, {
+                    'encoding': "utf-8",
+                    'flags': $['overwrite if exists'] ? "w" : "wx"
+                })]
 
                 if (stream[0] === 'initialized') {
                     const str = stream[1]
                     str.on('error', ($) => {
+                        //must the stream be set to failed? I think not, otherwise I cannot end it
+                        //stream = ['failed', null]
                         const errcode = $.message.split(":")[0]
                         if (errcode === undefined) {
                             pi.panic(`unknown error: ${$.message}`)
