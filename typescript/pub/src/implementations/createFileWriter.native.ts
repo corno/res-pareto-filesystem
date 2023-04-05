@@ -62,7 +62,7 @@ export const $$: A.createFileWriter = () => {
                         if (errcode === undefined) {
                             pi.panic(`unknown error: ${$.message}`)
                         }
-                        if (errcode === "EEXISTS") {
+                        if (errcode === "EEXIST") {
                             if (!overwrite) {
                                 console.error("Did not expect an EEXISTS error")
                             }
