@@ -239,6 +239,8 @@ export namespace T {
     
     export namespace WriteFileError {
         
+        export type already__exists = null
+        
         export type is__directory = null
         
         export type no__entity = null
@@ -254,6 +256,7 @@ export namespace T {
     }
     
     export type WriteFileError = 
+        | ['already exists', null]
         | ['is directory', null]
         | ['no entity', null]
         | ['unknown', {

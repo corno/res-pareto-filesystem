@@ -18,8 +18,9 @@ export const $$: A.createFileWriter = () => {
                 switch (errcode) {
                     case 'ENOENT': return ['no entity', null]
                     case 'EISDIR': return ['is directory', null]
+                    case 'EEXISTS': return ['already exists', null]
                     default: {
-                        console.log(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${message}`)
+                        console.error(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${message}`)
                         return ['unknown', { message: message }]
                     }
                 }
