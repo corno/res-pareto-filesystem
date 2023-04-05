@@ -19,7 +19,6 @@ export const $$: A.createFileWriter = () => {
                 switch (errcode) {
                     case 'ENOENT': return ['no entity', null]
                     case 'EISDIR': return ['is directory', null]
-                    case 'EEXISTS': return ['already exists', null]
                     default: {
                         console.error(`CORE: DEV TODO: ADD THIS OPTION TO pareto-filesystem WRITEFILE: ${message}`)
                         return ['unknown', { message: message }]
@@ -63,7 +62,11 @@ export const $$: A.createFileWriter = () => {
                         if (errcode === undefined) {
                             pi.panic(`unknown error: ${$.message}`)
                         }
-                        if (errcode !== "EEXISTS" || !overwrite) { //suppress the exists error if 'overwrite if exists' is set to true
+                        if (errcode === "EEXISTS") {
+                            if (!overwrite) {
+                                console.error("Did not expect an EEXISTS error")
+                            }
+                        } else {
                             $is.onWriteFileError({
                                 'error': createError(errcode, $.message),
                                 'path': joinedPath,

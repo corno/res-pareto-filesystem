@@ -148,7 +148,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "unknown": group({
                     "message": member(string()),
                 }),
-                "already exists": null_(),
             })),
         }),
     },
