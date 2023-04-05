@@ -12,6 +12,7 @@ import * as n_fs from "fs"
 export const $$: A.createFileWriter = () => {
     return {
         'construct': ($is) => ($) => {
+            const overwrite = $['overwrite if exists']
             const joinedPath = joinPath($.path)
 
             function createError(errcode: string, message: string): g_this.T.WriteFileError {
@@ -62,11 +63,13 @@ export const $$: A.createFileWriter = () => {
                         if (errcode === undefined) {
                             pi.panic(`unknown error: ${$.message}`)
                         }
+                        if (errcode !== "EEXISTS" || !overwrite) { //suppress the exists error if 'overwrite if exists' is set to true
+                            $is.onWriteFileError({
+                                'error': createError(errcode, $.message),
+                                'path': joinedPath,
+                            })
+                        }
 
-                        $is.onWriteFileError({
-                            'error': createError(errcode, $.message),
-                            'path': joinedPath,
-                        })
                     })
 
                     queue.forEach(($) => {
