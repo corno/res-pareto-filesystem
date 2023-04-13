@@ -6,5 +6,5 @@ import * as g_common from "glo-pareto-common"
 export function joinPath(
     path: g_common.T.Path
 ) {
-    return pth.join(...pi.flatten(path))
+    return pth.join(...pi.xflatten(path))
 }
