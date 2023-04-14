@@ -3,7 +3,8 @@ import * as pi from 'pareto-core-internals'
 
 import * as g_this from "../glossary"
 
-import * as nfs from "fs"
+import * as n_fs from "fs"
+import * as n_path from "path"
 
 import { joinPath } from "../native/joinPath.native"
 import { createDirNodeData } from "../native/createDirNodeData.native"
@@ -15,7 +16,7 @@ export const $$: A.readDirectory = () => {
         const joinedPath = joinPath($.path)
         return pi.wrapAsyncValueImp(
             (cb) => {
-                nfs.readdir(
+                n_fs.readdir(
                     joinedPath,
                     {
                         withFileTypes: true,
@@ -43,7 +44,7 @@ export const $$: A.readDirectory = () => {
                             const values: { [key: string]: g_this.T.DirNodeData } = {}
 
                             files.forEach(($) => {
-                                values[$.name] = createDirNodeData(joinPath([joinedPath, $.name]), $)
+                                values[$.name] = createDirNodeData(n_path.join(joinedPath, $.name), $)
                             })
                             cb(['success', pi.wrapRawDictionary(values)])
                         }

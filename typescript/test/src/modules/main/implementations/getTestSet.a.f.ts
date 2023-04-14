@@ -3,6 +3,7 @@ import * as ps from 'pareto-core-state'
 import * as pl from 'pareto-core-lib'
 import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
+import * as pd from 'pareto-core-data'
 
 import * as g_test from "lib-pareto-test"
 
@@ -12,7 +13,7 @@ import { A } from "../api.generated"
 
 export const $$: A.getTestSet = ($) => {
     pl.processAsyncValue(
-        g_pub.$r.readDirectory()({ path: ["..", "..", "pub", "src"] }),
+        g_pub.$r.readDirectory()({ path: pd.a(["..", "..", "pub", "src"]) }),
         ($) => {
             switch ($[0]) {
                 case 'error':
