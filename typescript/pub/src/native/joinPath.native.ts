@@ -8,7 +8,7 @@ export function joinPath(
 ) {
     let out = ""
     path.__forEach(($) => {
-        out = n_path.join($)
+        out = n_path.join(out, $)
     })
     return out
 }
